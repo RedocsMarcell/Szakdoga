@@ -1,0 +1,71 @@
+CREATE TABLE `Osztaly` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `ClassName` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `dolgozattipus` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `dolgozatok` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `class` int DEFAULT NULL,
+  `userid` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_dolgozatok_users` (`userid`),
+  KEY `fk_dolgozatok_class` (`class`),
+  CONSTRAINT `fk_dolgozatok_class` FOREIGN KEY (`class`) REFERENCES `class` (`id`),
+  CONSTRAINT `fk_dolgozatok_users` FOREIGN KEY (`userid`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `feladatok` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `text` text NOT NULL,
+  `score` int NOT NULL,
+  `type` int DEFAULT NULL,
+  `DolgozatID` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_feladatok_dolgozatok` (`DolgozatID`),
+  KEY `fk_feladatok_tipus` (`type`),
+  CONSTRAINT `fk_feladatok_dolgozatok` FOREIGN KEY (`DolgozatID`) REFERENCES `dolgozatok` (`id`),
+  CONSTRAINT `fk_feladatok_tipus` FOREIGN KEY (`type`) REFERENCES `dolgozattipus` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `role` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `classid` int DEFAULT NULL,
+  `enable` tinyint(1) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `roleid` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_users_class` (`classid`),
+  KEY `fk_users_role` (`roleid`),
+  CONSTRAINT fk_users_class FOREIGN KEY (classid) REFERENCES class (id),
+CONSTRAINT fk_users_role FOREIGN KEY (roleid) REFERENCES role (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `valaszok` (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+    text VARCHAR(255) NOT NULL, 
+    is_correct TINYINT(1) NOT NULL, 
+    FeladatID INT, 
+    FOREIGN KEY (FeladatID) REFERENCES feladatok(id)
+);
+
+
+

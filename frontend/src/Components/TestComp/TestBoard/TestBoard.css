@@ -1,0 +1,82 @@
+/* TestBoard.css */
+
+.test-board-container {
+    width: 100%;
+    background-color: #f0f0f0;
+  }
+  
+  .test-board {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px; /* Változtathatsz a méreten */
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .input-group {
+    flex: 1;
+    margin-bottom: 10px;
+  }
+  
+  .input-group label {
+    margin-right: 10px;
+  }
+  
+  .input-group select,
+  .input-group input {
+    width: 100%;
+    padding: 5px;
+  }
+  
+  .input-group.wide {
+    flex: 2;
+  }
+  
+ 
+  .task-button-container {
+    position: relative;
+    text-align: center; /* A tartalmat középre igazítjuk */
+    margin-bottom: 150px;
+  }
+  
+  .task-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .options-container {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .option {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .option:hover {
+    background-color: #ccc;
+  }
+  
+  .question {
+    margin-top: 10px;
+    text-align: center;
+  }
+  

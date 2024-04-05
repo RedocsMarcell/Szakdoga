@@ -1,0 +1,25 @@
+.one-answers-container {
+    margin-top: 20px;
+  }
+  
+  .question {
+    margin-bottom: 20px;
+  }
+  
+  .question input[type="text"] {
+    margin-right: 10px;
+  }
+  
+  .radio-group {
+    margin-top: 10px;
+  }
+  
+  .radio-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .add-question-button-one{
+    margin-top: 10px;
+  }
+  

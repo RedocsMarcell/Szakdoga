@@ -1,0 +1,15 @@
+.wholepage {
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+}
+
+.DivLeft {
+    position: absolute;
+    left: 50%;
+}
+.DivRight {
+    position: absolute;
+    Right: 50%;
+}
+  

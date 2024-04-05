@@ -5,6 +5,8 @@ import { FaLock } from "react-icons/fa";
 import axios from 'axios'
 
 const LoginForm = () => {
+  
+
   const [username, setText] = useState('')
   const [password, setPassword] = useState('')
   function handleSubmit(event) {
@@ -17,32 +19,27 @@ const LoginForm = () => {
  
   }
   return (
-      <div className="asd">
+    <div className='fulllogin'>
+      <div className="Login">
       <form onSubmit={handleSubmit}>
+      <h1>Space Teszt <img src='favicon.ico' className='kep' width={30}></img>   </h1>
       
-      <h1>Space Teszt <img src='moon.ico' className='kep' width={30}></img> 
-
-        </h1>
  
         <div className="input-box">
-        
-      
-          <input type="text" placeholder='Felhasználónév' required 
-            onChange={e => setText(e.target.value)} />
-          <FaUserAstronaut className='icon' />        
-       
+              <input type="text" placeholder='Felhasználónév' required 
+               onChange={e => setText(e.target.value)} />
+             <FaUserAstronaut className='icon' />        
         </div>
 
         <div className="input-box">
-          
-          <input type="password" placeholder='Jelszó' required 
-            onChange={e => setPassword(e.target.value)}/>
-          <FaLock className='icon' />
+             <input type="password" placeholder='Jelszó' required 
+               onChange={e => setPassword(e.target.value)}/>
+            <FaLock className='icon' />
+            </div>
 
-        </div>
         <div className="remember-forgot">
-          <label><input type="checkbox" />Emlékezz rám</label>
-          <a href="#">Elfelejtetted a jelszavad?</a>
+              
+              <a href="#">Elfelejtetted a jelszavad?</a>
         </div>  
         
         <button type="submit">Bejelentkezés</button>
@@ -51,6 +48,7 @@ const LoginForm = () => {
           <p> </p>
         </div>
       </form>
+    </div>
     </div>
   );
 }

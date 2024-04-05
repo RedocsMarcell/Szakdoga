@@ -1,19 +1,24 @@
-.asd {
+.Login {
     width: 420px;
+    height: 370px;
+    display:block;
     background: transparent;
     color: #fff;
     border: 2px solid rgb(255, 255, 255);
     backdrop-filter: blur(20px);
     border-radius: 20px;
     padding: 25px 35px;
+    margin-left: 12%;
+    margin-top:10%;
+
   }
   
-  .asd h1 {
+  .Login h1 {
     font-size: 26px;
     text-align: center;
   }
   
-  .asd .input-box {
+  .Login .input-box {
     position: relative;
     width: 100%;
     height: 50px;
@@ -44,7 +49,7 @@
     font-size: 16px;
   }
   
-  .asd .remember-forgot {
+  .Login .remember-forgot {
     display: flex;
     justify-content: space-between;
     font-size: 14.5px;
@@ -64,7 +69,7 @@
   .remember-forgot a:hover {
     text-decoration: underline;
   }
-  .asd button {
+  .Login button {
     width: 100%;
     height: 45px;
     border: none;
@@ -77,9 +82,10 @@
     font-size: 16px;
     color: #333;
     font-weight: 700;
+    margin-top: 15px;
 }
 
-.asd .register-link {
+.Login .register-link {
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
@@ -99,4 +105,27 @@
   position: relative;
   top: 6px ;
 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fulllogin {
+  display:flex;
+  position: absolute; 
+  width: 100%;
+  height: 100%;
+  background: url(./_649803495.png)
+  no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

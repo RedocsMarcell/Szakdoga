@@ -1,0 +1,49 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(107, 58, 86) ; /* Háttérszín */
+    padding: 10px 20px;
+  } 
+
+.navbar {
+    position: relative; /* Relatív pozícionálás a lenyíló menühöz */
+  }
+  
+  .profile-menu {
+    position: absolute; /* Abszolút pozícionálás */
+    top: 100%; /* Menü az ikon alatt */
+    right: 0; /* A jobb oldalon */
+    background-color: #fff; /* Háttérszín */
+    border: 1px solid #ccc; /* Szegély */
+    border-radius: 5px; /* Kerekített szegély */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Árnyék */
+    z-index: 1; /* A más tartalmak fölé kerül */
+    padding: 10 px;
+  }
+  
+  .profile-menu ul {
+    list-style-type: none; /* Pontozás eltüntetése */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .profile-menu ul li {
+    padding: 8px 0;
+    cursor: pointer;
+  }
+  
+ 
+
+  
+.navbar-icon img,
+.navbar-profile img {
+  width: 60px; /* Ikonszélesség */
+  height: 60px; /* Ikonmagasság */
+  border-radius: 50%; /* Kerekített szegély */
+}
+
+.navbar-profile {
+  position: relative; /* Relatív pozícionálás a lenyíló menühöz */
+}
+

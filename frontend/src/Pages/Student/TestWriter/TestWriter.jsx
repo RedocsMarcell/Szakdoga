@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../../../Components/Navbar/Navbar';
+import TestBoardWriter from '../../../Components/TestComp/TestBoardWriter/TestBoardWriter'
 
 const TestWriter = () => {
   return (
@@ -8,6 +9,8 @@ const TestWriter = () => {
       
       <Navbar />
       
+      
+      <TestBoardWriter />
      
 
     </div>

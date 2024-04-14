@@ -1,35 +1,15 @@
-import React, { useState } from 'react';
-import './OneAnswer.css';
+import React from 'react'
+import '/OneanswerWriter.css'
 
-const OneAnswers = ({questionNumber,onResponse,removeTask}) => {
-  const [question, setQuestion] = useState([]);
-  const [answers, setAnswers] = useState(['','','','']);
-  const [correctanswers, setCorrectAnswers] = useState(-1)
-
-
-  const handleQuestionChange = (e) => {
-    setQuestion(e.target.value);
-};
-
-const handleAnswerChange = (index, e) => {
-  const updatedAnswers = [...answers];
-  updatedAnswers[index] = e.target.value;
-  setAnswers(updatedAnswers);
-};
-
-  const handleSave = (question,answer,questionNumber,correctanswer) => {
-    onResponse(question,answers,questionNumber,correctanswer)
-}
-
-  const handleCorrectAnswerChange = (index) => {
-    setCorrectAnswers(index+1)
-  }
-
-  const handleRemove = () => {
-    removeTask(questionNumber);
-  };
-
+function OneanswerWriter() {
   return (
+    <div>
+
+
+
+ 
+
+  
     <div className="one-answers-container">
         <div className="question">
           <label>
@@ -107,13 +87,20 @@ const handleAnswerChange = (index, e) => {
           </div>
           
           <br/>
-          <button className='save-button2' onClick={() => handleSave(question,answers,questionNumber,correctanswers)} >Save</button>
+          <button onClick={() => handleSave(question,answers,questionNumber,correctanswers)} >Save</button>
           <br/>
           <button onClick={handleRemove} className="remove-question-button-one">X</button>
         </div>
     
     </div>
-  );
-};
 
-export default OneAnswers;
+
+
+
+
+      
+    </div>
+  )
+}
+
+export default OneanswerWriter

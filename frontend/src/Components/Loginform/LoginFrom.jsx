@@ -1,12 +1,19 @@
-import React, { useState }from 'react';
+import React, { useState,useEffect }from 'react';
 import './LoginForm.css';
 import { FaUserAstronaut } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import axios from 'axios'
 
-const LoginForm = () => {
+
+
+
   
 
+
+
+const LoginForm = () => {
+  const [userid,setUserid] = useState(-1)
+  const [token, setToken] = useState('');
   const [username, setText] = useState('')
   const [password, setPassword] = useState('')
   function handleSubmit(event) {
@@ -14,10 +21,50 @@ const LoginForm = () => {
 
     console.log (username, password)
     axios.post('http://localhost:8081/users', {username, password})
-    .then(res => console.log(res))
+    .then(res => {
+      localStorage.setItem('token', res.data.token);
+      try {
+               const tokenParts = res.data.token.split('.');
+               const payload = JSON.parse(atob(tokenParts[1]));
+              
+               
+               setUserid(payload)
+               console.log(payload)
+               
+             } catch (error) {
+               console.error('Error decoding token:', error);
+             }
+      
+      
+    })
     .catch(err => console.log(err));
  
   }
+
+
+  
+
+  // useEffect(() => {
+  //   // Fetch token from local storage or session storage
+  //   const storedToken = localStorage.getItem('token');
+  //   if (storedToken) {
+  //     try {
+  //       const tokenParts = storedToken.split('.');
+  //       const payload = JSON.parse(atob(tokenParts[1]));
+        
+  //       console.log(payload);
+  //     } catch (error) {
+  //       console.error('Error decoding token:', error);
+  //     }
+      
+  //   }
+  // }, []);
+
+
+
+  
+
+
   return (
     <div className='fulllogin'>
       <div className="Login">
@@ -42,7 +89,7 @@ const LoginForm = () => {
               <a href="#">Elfelejtetted a jelszavad?</a>
         </div>  
         
-        <button type="submit">Bejelentkezés</button>
+        <button type="submit"  >Bejelentkezés</button>
         
         <div className="register-link">
           <p> </p>

@@ -3,6 +3,7 @@ import './TestBoard.css';
 import TrueFalse from '../Tasks/TrueFalse/TrueFalse';
 import OneAnswer from '../Tasks/Oneanswer/OneAnswer';
 import MultipleAnswers from '../Tasks/MultipleAnswers/MultipleAnswers';
+import axios from 'axios'
 
 
 function TestBoard() {
@@ -69,10 +70,10 @@ function TestBoard() {
 
         addTask(taskNumber)
         
-        setShowOptions(false); // Itt beállítjuk a showOptions értékét false-ra, hogy az opciók eltűnjenek
+        setShowOptions(false); 
     }
     const handleTrueFalseResponse = (question, answer,questionNumber,correctanswer) => {
-        // Do something with the received question and answer, such as updating state
+        
         tasks[questionNumber-1]["question"] = question
         tasks[questionNumber-1]["answer"] = answer
         tasks[questionNumber-1]["correctanswer"] = correctanswer
@@ -84,7 +85,7 @@ function TestBoard() {
     };
 
     const handleMultipleAnswersResponse = (question, answer,questionNumber,correctanswer) => {
-        // Do something with the received question and answer, such as updating state
+        
         tasks[questionNumber-1]["question"] = question
         tasks[questionNumber-1]["answer"] = answer
         tasks[questionNumber-1]["correctanswer"] = correctanswer
@@ -96,7 +97,7 @@ function TestBoard() {
 
 
     const handleOneAnswerResponse = (question, answer,questionNumber,correctanswer) => {
-        // Do something with the received question and answer, such as updating state
+       
         tasks[questionNumber-1]["question"] = question
         tasks[questionNumber-1]["answer"] = answer
         tasks[questionNumber-1]["correctanswer"] = correctanswer
@@ -116,7 +117,7 @@ function TestBoard() {
                         <label htmlFor="class">Osztály:</label>
                         <select id="class" value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)}>
                             <option value="">Válassz osztályt...</option>
-                            {/* Ide jönnek az előre megadott osztályok például: */}
+                            {}
                             <option value="10.A">10.A</option>
                             <option value="11.A">11.A</option>
                             <option value="12.B">12.B</option>
@@ -126,7 +127,7 @@ function TestBoard() {
                         <label htmlFor="subject">Tantárgy:</label>
                         <select id="subject" value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)}>
                             <option value="">Válassz tantárgyat...</option>
-                            {/* Ide jönnek az előre megadott tantárgyak például: */}
+                            {}
                             <option value="Matematika">Matematika</option>
                             <option value="Irodalom">Irodalom</option>
                             <option value="Biologia">Biologia</option>
@@ -139,8 +140,8 @@ function TestBoard() {
                         <input type="text" id="quizTitle" value={quizTitle} onChange={(e) => setQuizTitle(e.target.value)} />
                     </div>
                     <div className="input-group">
-                        <label htmlFor="quizTime">Dolgozat időtartama:</label>
-                        <input type="text" id="quizTime" value={quizTime} onChange={(e) => setQuizTime(e.target.value)} />
+                        <label htmlFor="quizTime">Dolgozat időtartama (perc):</label>
+                        <input type="text" id="quizTime" placeholder='perc' value={quizTime} onChange={(e) => setQuizTime(e.target.value)} />
                     </div>
                 </div>
                 
@@ -180,7 +181,24 @@ function TestBoard() {
                     }
             })}
               
-                
+              <div className="finish-quiz-button-container">
+              <button className="finish-quiz-button" disabled={tasks.length === 0}
+              onClick={() => {
+                console.log(tasks)
+                let taskdetails = {
+                    class : selectedClass,
+                    subject : selectedSubject,
+                    quiztitle : quizTitle,
+                    quiztime : quizTime
+                }
+                axios.post('http://localhost:8081/dolgozatok', {
+                    tasks: tasks,
+                    taskdetails : taskdetails
+                })
+              }}>
+                Dolgozat véglegesítés
+                </button>
+                </div>
 
             </div>
         </div>

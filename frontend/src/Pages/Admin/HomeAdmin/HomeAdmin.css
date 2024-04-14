@@ -1,3 +1,18 @@
-body{
-    background-color: white;
-}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ablak magassága teljes képernyő magasságú */
+  }
+  
+  .editorContainer {
+    display: flex;
+  }
+  
+  .editor {
+    width: 200px; /* Változtathatod a méreteket igény szerint */
+    height: 300px;
+    border: 1px solid #ccc;
+    margin-right: 20px; /* Kicsi térköz az ablakok között */
+  }
+  

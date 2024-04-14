@@ -1,0 +1,67 @@
+.class-editor {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .class-editor h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .class-list {
+    margin-bottom: 20px;
+  }
+  
+  .class-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .class-item span {
+    font-size: 18px;
+  }
+  
+  .class-item button {
+    padding: 5px 10px;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .class-item button:hover {
+    background-color: #d63e22;
+  }
+  
+  .add-class input[type="text"] {
+    padding: 8px;
+    width: 70%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  
+  .add-class button {
+    padding: 8px 15px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-class button:hover {
+    background-color: #45a049;
+  }
+  

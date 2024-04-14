@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+  }
+  
+  .TestWindow {
+    position: relative;
+    min-width: 35px;
+    min-height: 35px;
+    width: 50vh;
+    height: 22.5vh;
+    border: 2px solid black;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .name {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: bold; 
+  }
+  
+  .date {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  }
+  
+  .score {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  /* TestsWindow.css */
+  
+  .TestWindow {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Kerekített sarkok */
+    padding: 100px;
+    width: 400;
+    height: 150px;
+    background-color: #f9f9f9; /* Háttérszín */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Árnyék */
+  }
+  
+  
+  
+  

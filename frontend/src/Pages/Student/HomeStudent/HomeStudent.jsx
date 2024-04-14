@@ -15,7 +15,7 @@ const HomeStudent = () => {
         </Link>
       </div>
       <div className='DivRight'>
-        <Link to="http://localhost:3000/TestWriter">
+        <Link to="http://localhost:3000/UncompletedTest">
           <Window className='RightWindow'/>
         </Link>
       </div>

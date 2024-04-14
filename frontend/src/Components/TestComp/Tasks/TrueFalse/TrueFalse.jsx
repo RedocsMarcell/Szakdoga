@@ -42,7 +42,7 @@ const TrueFalse = ({questionNumber,questionvalue, onResponse, removeTask}) => {
         </div>
         <button onClick={handleRemove} className="remove-question-button-true">X</button>
         <br/>
-        <button className='save-button' onClick={() => handleSave(question, answer, questionNumber, answer)}>Save</button>
+        <button className='save-button2' onClick={() => handleSave(question, answer, questionNumber, answer)}>Save</button>
      
     </div>
   );

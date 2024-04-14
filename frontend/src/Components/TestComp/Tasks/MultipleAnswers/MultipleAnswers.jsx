@@ -68,7 +68,7 @@ const MultipleAnswers = ({questionNumber, onResponse,removeTask}) => {
       <br />
       <button onClick={addAnswerInput}>Add Answer</button>
       <br />
-      <button className="save-button" onClick={() => handleSave(question,answers,questionNumber,correctanswers)} >Save</button>
+      <button className="save-button2" onClick={() => handleSave(question,answers,questionNumber,correctanswers)} >Save</button>
       <br/>
       <button onClick={handleRemove} className="remove-question-button-multiple">X</button>
         

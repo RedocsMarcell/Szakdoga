@@ -14,7 +14,9 @@ import MyTestsTeacher from './Pages/Teacher/MyTestsTeacher/MyTestsTeacher';
 import TestMaker from './Pages/Teacher/TestMaker/TestMaker';
 import TestResult from './Pages/TestResult/TestResult';
 import MyProfilTeacher from './Pages/Teacher/MyProfilTeacher/MyProfilTeacher';
-import MyProfilStudent from './Pages/Student/MyProfilStudent/MyProfilStudent';
+import UncompletedTest from './Pages/Student/UncompletedTest/UncompletedTest';
+
+
 
 
 function App() {
@@ -39,11 +41,13 @@ function App() {
        <Route path='/MyTestsTeacher' element={<MyTestsTeacher />}></Route>
        <Route path='/TestMaker' element={<TestMaker />}></Route>
        <Route path='/TestResult' element={<TestResult />}></Route>
-       <Route path='/MyProfilStudent' element={<MyProfilStudent />}></Route>
        <Route path='/MyProfilTeacher' element={<MyProfilTeacher />}></Route>
+       <Route path='/UncompletedTest' element={<UncompletedTest />}></Route>
+       
 
       </Routes>
     </BrowserRouter>
+    
   );
 }
 

@@ -23,3 +23,13 @@
     margin-top: 10px;
   }
   
+  .save-button2 {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #6bf178;
+  }

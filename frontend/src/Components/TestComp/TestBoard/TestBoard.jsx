@@ -120,7 +120,7 @@ function TestBoard() {
                             {}
                             <option value="10.A">10.A</option>
                             <option value="11.A">11.A</option>
-                            <option value="12.B">12.B</option>
+                            <option value="12.A">12.A</option>
                         </select>
                     </div>
                     <div className="input-group">

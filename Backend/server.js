@@ -87,7 +87,40 @@ console.log(formattedDate);
    }
     
     const dolgozatid = data.insertId
-    
+    sql = `SELECT * FROM class WHERE ClassName = ?`
+    db.query(sql, [taskdetails.class], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+       }
+       
+       const classid =data[0].Id
+       sql = `SELECT * FROM users WHERE class_id = ?`
+       db.query(sql, [classid], (err, usersdata) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+       }
+       console.log(usersdata)
+
+       for (let i=0;i<usersdata.length;i++)
+       {
+        sql = `INSERT INTO usertests ( userID,Testid,Completed, Points) VALUES (?,?,0,0)`;
+        db.query(sql, [usersdata[i].id,dolgozatid,], (err, usersdata) => {
+            if (err) {
+                console.error(err);
+                return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+           }
+        })
+       }
+
+       })
+       
+    })
+
+
+
+
     for (let i =0;i<tasks.length;i++)
     {
         // feladatok

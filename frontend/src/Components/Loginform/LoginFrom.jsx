@@ -1,4 +1,4 @@
-import React, { useState,useEffect }from 'react';
+import React, { useState }from 'react';
 import './LoginForm.css';
 import { FaUserAstronaut } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
@@ -12,8 +12,7 @@ import axios from 'axios'
 
 
 const LoginForm = () => {
-  const [userid,setUserid] = useState(-1)
-  const [token, setToken] = useState('');
+  const [userid,setUserid] = useState(-1)//
   const [username, setText] = useState('')
   const [password, setPassword] = useState('')
   function handleSubmit(event) {
@@ -43,25 +42,6 @@ const LoginForm = () => {
 
 
   
-
-  // useEffect(() => {
-  //   // Fetch token from local storage or session storage
-  //   const storedToken = localStorage.getItem('token');
-  //   if (storedToken) {
-  //     try {
-  //       const tokenParts = storedToken.split('.');
-  //       const payload = JSON.parse(atob(tokenParts[1]));
-        
-  //       console.log(payload);
-  //     } catch (error) {
-  //       console.error('Error decoding token:', error);
-  //     }
-      
-  //   }
-  // }, []);
-
-
-
   
 
 

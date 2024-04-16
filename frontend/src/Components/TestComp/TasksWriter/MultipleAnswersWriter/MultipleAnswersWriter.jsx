@@ -2,7 +2,7 @@ import React from 'react';
 import './MultipleAnswersWriter.css';
 
 const MultipleAnswersWriter = ({ questionNumber, question, answers }) => {
-
+    
     return (
         <div className="multiple-choice-container">
             <label>
@@ -15,7 +15,7 @@ const MultipleAnswersWriter = ({ questionNumber, question, answers }) => {
                     <label>
                         Answer {index + 1}:
                         <div>
-                            {answer}
+                            {answer.text}
                             <input
                         type="checkbox"
                     

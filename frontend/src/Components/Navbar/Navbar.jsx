@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import './Navbar.css'; // Importáljuk a stíluslapot
-
+import './Navbar.css';
+import Logout from '../Logout/Logout'
 
 
 
@@ -42,26 +42,31 @@ function Navbar() {
   };
 
   return (
+  
+  
+    
     <nav className="navbar">
+   
       <div className="navbar-icon" onClick={navigateToHome}>
         {/* Icon placeholder */}
-        <img src="favicon.ico" alt="navbar-icon" />
+        <img src="../favicon.ico" alt="navbar-icon" />
       </div>
       <div className="navbar-profile">
       
         {/* Profile picture placeholder */}
-        <img src="favicon.ico" alt="navbar-icon" onClick={toggleMenu}/>  
+        <img src="../favicon.ico" alt="navbar-icon" onClick={toggleMenu}/>  
       </div>
       {menuOpen && (
         <div className="profile-menu">
           <ul>
             <li onClick={() => console.log("Jelszó módosítás")}>Jelszó módosítás</li>
             <li onClick={() => console.log("My Profil")}>My Profil</li>
-            <li onClick={() => console.log("Kijelentkezés")}>Kijelentkezés</li>
+            <li> {<Logout />}  </li>
           </ul>
         </div>
       )}
     </nav>
+    
   );
 }
 

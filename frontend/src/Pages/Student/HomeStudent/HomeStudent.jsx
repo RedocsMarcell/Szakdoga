@@ -20,10 +20,14 @@ const HomeStudent = () => {
         setUserid(payload.roleid)
       } catch (error) {
         console.error('Error decoding token:', error);
+        
       }
       
     }
   }, []);
+  useEffect(()=> {
+    console.log(userid)
+  }, [userid])
 
   const testbool= userid === 3
 

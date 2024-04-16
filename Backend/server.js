@@ -67,7 +67,6 @@ app.post('/users', (req, res) => {
     
 
 
-
 app.post('/dolgozatok', (req, res) =>{
     const currentDate = new Date();
     const year = currentDate.getFullYear(); // Get the full year (YYYY)
@@ -79,6 +78,11 @@ console.log(formattedDate);
    
     const tasks = req.body.tasks
     const taskdetails = req.body.taskdetails
+
+    
+
+
+
     let sql = `INSERT INTO Tests ( name,date,subject,class,time,user_id   ) VALUES (?,?,?,?,?,1)`;
     db.query(sql, [taskdetails.quiztitle,formattedDate,taskdetails.subject,taskdetails.class,taskdetails.quiztime], (err, data) => {
     if (err) {
@@ -106,7 +110,7 @@ console.log(formattedDate);
        for (let i=0;i<usersdata.length;i++)
        {
         sql = `INSERT INTO usertests ( userID,Testid,Completed, Points) VALUES (?,?,0,0)`;
-        db.query(sql, [usersdata[i].id,dolgozatid,], (err, usersdata) => {
+        db.query(sql, [usersdata[i].id,dolgozatid], (err, usersdata) => {
             if (err) {
                 console.error(err);
                 return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
@@ -197,9 +201,48 @@ console.log(formattedDate);
 
   
 
+app.post('/receiveuncompletedtests', (req, res) => {
+    const sql = 'SELECT * FROM usertests WHERE UserID = ? and CorrectState = 0';
+    db.query(sql, [req.body.useruniqueid], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
 
 
+app.post('/receiveuncompletedtestsoriginal', (req, res) => {
+    const sql = 'SELECT * FROM tests WHERE id = ? ';
+    db.query(sql, [req.body.testid], (err, data) => {
+        
+        return res.json(data)
 
+    
+    })
+})
+
+
+app.post('/receivetestswriting', (req, res) => {
+    const sql = 'SELECT * FROM tasks WHERE Test_id = ?';
+    db.query(sql, [req.body.id], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
+
+
+app.post('/receivetestanswerswriting', (req, res) => {
+    const sql = 'SELECT * FROM answers WHERE Task_id = ?';
+    db.query(sql, [req.body.taskid], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
 
 
 

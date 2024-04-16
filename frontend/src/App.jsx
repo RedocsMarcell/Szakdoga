@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Routes, Route,} from 'react-router-dom';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import LoginForm from './Components/Loginform/LoginFrom';
 import ClassEditor from './Pages/Admin/ClassEditor/ClassEditor';
 import UserEditor from './Pages/Admin/UserEditor/UserEditor';
@@ -36,7 +36,7 @@ function App() {
        <Route path='/PasswordChange' element={<PasswordChange />}></Route>
        <Route path='/HomeStudent' element={<HomeStudent />}></Route>
        <Route path='/MyTestsStudent' element={<MyTestsStudent />}></Route>
-       <Route path='/TestWriter' element={<TestWriter />}></Route>
+       <Route path='/TestWriter/:id' element={<TestWriter />}></Route>
        <Route path='/HomeTeacher' element={<HomeTeacher />}></Route>
        <Route path='/MyTestsTeacher' element={<MyTestsTeacher />}></Route>
        <Route path='/TestMaker' element={<TestMaker />}></Route>

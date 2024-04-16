@@ -1,38 +1,103 @@
-import React,{ useState} from 'react'
+import React,{ useState,useEffect} from 'react'
 import MultipleAnswersWriter from '../../../Components/TestComp/TasksWriter/MultipleAnswersWriter/MultipleAnswersWriter'
+import OneAnswerWriter from '../../../Components/TestComp/TasksWriter/OneanswerWriter/OneanswerWriter'
+import TrueFalseWriter from '../../../Components/TestComp/TasksWriter/TrueFalseWriter/TrueFalseWriter'
 import "./TestBoardWriter.css"
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
-const defaultstate = [
-  {
-    id:1,
-    question: "Igaz-e",
-    questionType : 2,
-    answers: ["elso","maosdik"]
 
-  }
-]
+
 
 
 
 
 function TestBoardWriter() {
-  const [tasks,setTasks] = useState(defaultstate)
+  let {id} =useParams()
+  const [tasks,setTasks] = useState([])
+  const [answers,setAnswers] = useState([])
+  const [useranswers,setUseranswers] = useState([])
+
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await axios.post('http://localhost:8081/receivetestswriting', { id });
+        console.log(response.data);
+        setTasks(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchTasks();
+  }, [id]);
+
+  useEffect(() => {
+    let promises = tasks.map(task => {
+      let taskid = task.id;
+      return axios.post('http://localhost:8081/receivetestanswerswriting', { taskid })
+                 .then(res => res.data)
+                 .catch(err => console.error(err));
+    });
+  
+    Promise.all(promises)
+      .then(answers => {
+        
+        setAnswers(answers);
+      })
+      .catch(err => console.error(err));
+  }, [tasks]);
+
+  useEffect(() => {
+    console.log(answers)
+  },[answers])
+  useEffect(() => {
+    console.log(useranswers)
+  },[useranswers])
+
+  const handleTrueFalse = (answer,taskid) => {
+    const filtereduseranswers = useranswers.filter(e => e.TaskId !== taskid)
+    const newuseranswer = {
+      UserTestId: id,
+      AnswerId : answer,
+      TaskId : taskid
+    }
+    setUseranswers([...filtereduseranswers,newuseranswer])
+
+  }
+
+  const handleOneAnswer = (answer,taskid) => {
+    const filtereduseranswers = useranswers.filter(e => e.TaskId !== taskid)
+    const newuseranswer = {
+      UserTestId: id,
+      AnswerId : answer,
+      TaskId : taskid
+    }
+    setUseranswers([...filtereduseranswers,newuseranswer])
+
+  }
+
+  
+    
+  
   return (
     <div className="test-board-container">
             <div className="test-board">
 
                 
-                {tasks.map((task, index) => {
+                {tasks.length>0 && answers.length>0 && tasks.map((task, index) => {
                     
-                    // if (task.questionType === 1) {
-                    //     return <TrueFalse key={task.id} questionvalue={task.question}questionNumber={index + 1} />;
-                    // } else if (task.questionType === 3) {
-                    //     return <OneAnswer key={task.id} questionNumber={index + 1} />;
-                    //} else
-                     if (task.questionType === 2) {
-                        return <MultipleAnswersWriter questionNumber={1} question={task.question} answers={task.answers} /> ;
+                     if (task.type === 1) {
+                         return <TrueFalseWriter key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]} onResponse={handleTrueFalse} taskid={task.id}/>;
+                     }
+                     else if (task.type === 3) {
+                        return <OneAnswerWriter key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]} onResponse={handleOneAnswer}  taskid={task.id}/>;
+                     }
+                     else if (task.type === 2) {
+                        return <MultipleAnswersWriter key={task.id} questionNumber={index+1} question={task.text} answers={answers[index]} /> ;
                     } else {
-                        return null; 
+                        return "null"; 
                     }
             })}
               
@@ -40,11 +105,7 @@ function TestBoardWriter() {
               <button className="finish-quiz-button" disabled={tasks.length === 0}
               onClick={() => {
                 console.log(tasks)
-                let taskdetails = {
-                    class : selectedClass,
-                    subject : selectedSubject,
-                    quiztitle : quizTitle,
-                    quiztime : quizTime
+                
                 }
                 axios.post('http://localhost:8081/dolgozatok', {
                     tasks: tasks,

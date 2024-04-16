@@ -1,0 +1,59 @@
+.true-false-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .question {
+    flex-grow: 1; 
+    margin-right: 10px;
+  }
+  
+  .answer-buttons {
+    display: flex;
+    position: absolute;
+    right: 100px;
+  }
+  
+  .answer-buttons button {
+    flex: 1; 
+    margin-right: 5px;
+    text-align: center; /* Szöveg középre igazítása a gombokon belül */
+  }
+  
+
+.save-button2 {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .save-button {
+    background-color: #6bf178; /* Zöld szín a save gombnak */
+  }
+  
+  .remove-question-button-true {
+    background-color: #ff7f7f;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+  
+  .selected {
+    background-color: #007bff;
+    color: white;
+  }
+  

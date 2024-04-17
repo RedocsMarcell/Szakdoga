@@ -3,6 +3,7 @@ import Navbar from '../../../Components/Navbar/Navbar';
 import './HomeTeacher.css';
 import Window from '../../../Components/Window/Window';
 import { Link } from 'react-router-dom';
+import Footer from '../../../Components/Footer/Footer';
 
 const HomeTeacher = () => {
   
@@ -43,6 +44,7 @@ const HomeTeacher = () => {
           <Window className='RightWindow'/>
         </Link>
       </div>
+      <Footer/>
     </div>
   );
 }

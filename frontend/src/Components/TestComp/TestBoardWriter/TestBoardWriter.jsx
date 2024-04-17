@@ -14,6 +14,7 @@ import axios from 'axios';
 
 function TestBoardWriter() {
   let {id} =useParams()
+  let {usertestid} =useParams()
   const [tasks,setTasks] = useState([])
   const [answers,setAnswers] = useState([])
   const [useranswers,setUseranswers] = useState([])
@@ -23,7 +24,7 @@ function TestBoardWriter() {
     const fetchTasks = async () => {
       try {
         const response = await axios.post('http://localhost:8081/receivetestswriting', { id });
-        console.log(response.data);
+        
         setTasks(response.data);
       } catch (error) {
         console.error(error);
@@ -49,17 +50,13 @@ function TestBoardWriter() {
       .catch(err => console.error(err));
   }, [tasks]);
 
-  useEffect(() => {
-    console.log(answers)
-  },[answers])
-  useEffect(() => {
-    console.log(useranswers)
-  },[useranswers])
+  
+  
 
   const handleTrueFalse = (answer,taskid) => {
     const filtereduseranswers = useranswers.filter(e => e.TaskId !== taskid)
     const newuseranswer = {
-      UserTestId: id,
+      UserTestId: usertestid,
       AnswerId : answer,
       TaskId : taskid
     }
@@ -67,14 +64,37 @@ function TestBoardWriter() {
 
   }
 
-  const handleOneAnswer = (answer,taskid) => {
+  const handleOneAnswer = (answer,taskid,) => {
     const filtereduseranswers = useranswers.filter(e => e.TaskId !== taskid)
     const newuseranswer = {
-      UserTestId: id,
+      UserTestId: usertestid,
       AnswerId : answer,
       TaskId : taskid
     }
     setUseranswers([...filtereduseranswers,newuseranswer])
+
+  }
+
+  const handleMulltipleAnswer = (answer,taskid,answers) => {
+    let answerlist = []
+    
+    answers.forEach(e => { answerlist.push(e.id) });
+    console.log("valaszok",answerlist)
+    const  newuseranswer = [...useranswers]
+    const filtereduseranswers = newuseranswer.filter (e => !answerlist.includes(e.AnswerId))
+    let newadduseranswers = []
+    
+    answer.forEach(e => {
+      const newuseranswerdict = {
+        UserTestId: usertestid,
+        AnswerId : e,
+        TaskId : taskid
+      }
+      newadduseranswers.push(newuseranswerdict)
+    })
+    
+    setUseranswers([...filtereduseranswers,...newadduseranswers])
+
 
   }
 
@@ -88,33 +108,33 @@ function TestBoardWriter() {
                 
                 {tasks.length>0 && answers.length>0 && tasks.map((task, index) => {
                     
-                     if (task.type === 1) {
+                     if (task.type_id === 1) {
                          return <TrueFalseWriter key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]} onResponse={handleTrueFalse} taskid={task.id}/>;
                      }
-                     else if (task.type === 3) {
+                     else if (task.type_id === 3) {
                         return <OneAnswerWriter key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]} onResponse={handleOneAnswer}  taskid={task.id}/>;
                      }
-                     else if (task.type === 2) {
-                        return <MultipleAnswersWriter key={task.id} questionNumber={index+1} question={task.text} answers={answers[index]} /> ;
+                     else if (task.type_id === 2) {
+                        return <MultipleAnswersWriter key={task.id} questionNumber={index+1} question={task.text} answers={answers[index]} onResponse={handleMulltipleAnswer} taskid={task.id} /> ;
                     } else {
                         return "null"; 
                     }
             })}
               
-              {/* <div className="finish-quiz-button-container">
+              <div className="finish-quiz-button-container">
               <button className="finish-quiz-button" disabled={tasks.length === 0}
               onClick={() => {
-                console.log(tasks)
+                console.log(useranswers)
                 
-                }
-                axios.post('http://localhost:8081/dolgozatok', {
-                    tasks: tasks,
-                    taskdetails : taskdetails
+                axios.post('http://localhost:8081/senduseranswers', {
+                    answers: useranswers,
+                    usertestid : usertestid
+                    
                 })
               }}>
                 Dolgozat véglegesítés
                 </button>
-                </div> */}
+                </div>
 
             </div>
         </div>

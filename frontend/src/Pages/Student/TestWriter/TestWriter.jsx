@@ -2,6 +2,7 @@ import React, { useState,useEffect }from 'react';
 import Navbar from '../../../Components/Navbar/Navbar';
 import TestBoardWriter from '../../../Components/TestComp/TestBoardWriter/TestBoardWriter'
 import { useParams } from 'react-router-dom';
+import Footer from '../../../Components/Footer/Footer';
 
 const TestWriter = () => {
   const [userid,setUserid] = useState(-1)//
@@ -34,7 +35,7 @@ const TestWriter = () => {
       
       <TestBoardWriter />
      
-
+      <Footer/>
     </div>
      
    

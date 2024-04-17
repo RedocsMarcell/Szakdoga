@@ -1,6 +1,7 @@
 import React, { useState,useEffect }from 'react';
 import Navbar from '../../../Components/Navbar/Navbar';
 import TestBoard from '../../../Components/TestComp/TestBoard/TestBoard';
+import Footer from '../../../Components/Footer/Footer';
 
 const TestMaker = () => {
   const [userid,setUserid] = useState(-1)//
@@ -29,6 +30,8 @@ const TestMaker = () => {
       <Navbar />
       
      <TestBoard/>
+     
+     <Footer/>
 
     </div>
      

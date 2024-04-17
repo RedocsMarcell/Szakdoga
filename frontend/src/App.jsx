@@ -36,7 +36,7 @@ function App() {
        <Route path='/PasswordChange' element={<PasswordChange />}></Route>
        <Route path='/HomeStudent' element={<HomeStudent />}></Route>
        <Route path='/MyTestsStudent' element={<MyTestsStudent />}></Route>
-       <Route path='/TestWriter/:id' element={<TestWriter />}></Route>
+       <Route path='/TestWriter/:id/:usertestid' element={<TestWriter />}></Route>
        <Route path='/HomeTeacher' element={<HomeTeacher />}></Route>
        <Route path='/MyTestsTeacher' element={<MyTestsTeacher />}></Route>
        <Route path='/TestMaker' element={<TestMaker />}></Route>

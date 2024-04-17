@@ -2,7 +2,7 @@ import React, { useState,useEffect }from 'react';
 import TestsWindowUnCompletedTest from '../../../Components/TestsWindowUnCompletedTest/TestsWindowUnCompletedTest'
 import Navbar from '../../../Components/Navbar/Navbar'
 import axios from 'axios';
-
+import Footer from '../../../Components/Footer/Footer';
 
 function UncompletedTest() {
   
@@ -20,13 +20,14 @@ function UncompletedTest() {
       try {
         const tokenParts = storedToken.split('.');
         const payload = JSON.parse(atob(tokenParts[1]));
-        
+        console.log(payload)
         setUserid(payload.roleid)
         const useruniqueid = payload.id
 
         
         axios.post('http://localhost:8081/receiveuncompletedtests', { useruniqueid })
         .then(res => {
+          console.log(res.data)
             setTests(res.data)
 
        } )
@@ -77,7 +78,7 @@ Promise.all(promises)
     
       
       { tests.length>0 && testinformation.length>0 ? (tests.map((test, index) => (
-      <TestsWindowUnCompletedTest key={index} name={testinformation[index].Name} date={new Date(testinformation[index].Date).toLocaleDateString("hu-HU", options).replace(/\//g, '-')} id={testinformation[index].Id}  />
+      <TestsWindowUnCompletedTest key={index} name={testinformation[index].Name} date={new Date(testinformation[index].Date).toLocaleDateString("hu-HU", options).replace(/\//g, '-')} id={testinformation[index].Id} usertestid={tests[index].id}   />
       ))
     ) : (
       <p>No tests available</p>
@@ -86,6 +87,7 @@ Promise.all(promises)
       
       
       </div>
+      <Footer/>
     </div>
   )
 }

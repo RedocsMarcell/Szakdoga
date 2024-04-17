@@ -2,6 +2,7 @@ import React, { useState,useEffect }from 'react';
 import Navbar from '../../../Components/Navbar/Navbar';
 import './MyTestsStudent.css';
 import TestsWindow from '../../../Components/TestWindow/TestsWindow';
+import Footer from '../../../Components/Footer/Footer';
 
 const MyTestsStudent = () => {
   const [userid,setUserid] = useState(-1)//
@@ -50,6 +51,7 @@ const MyTestsStudent = () => {
       <TestsWindow name = "Teszt9" date = "2023.10.12" score = "10/10"/>
       
       </div>
+      <Footer/>
     </div>
 
      

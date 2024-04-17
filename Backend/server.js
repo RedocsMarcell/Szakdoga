@@ -79,9 +79,6 @@ console.log(formattedDate);
     const tasks = req.body.tasks
     const taskdetails = req.body.taskdetails
 
-    
-
-
 
     let sql = `INSERT INTO Tests ( name,date,subject,class,time,user_id   ) VALUES (?,?,?,?,?,1)`;
     db.query(sql, [taskdetails.quiztitle,formattedDate,taskdetails.subject,taskdetails.class,taskdetails.quiztime], (err, data) => {
@@ -128,8 +125,8 @@ console.log(formattedDate);
     for (let i =0;i<tasks.length;i++)
     {
         // feladatok
-        console.log(tasks[i].questionType)
-        sql = `INSERT INTO tasks ( text,score,type, test_id) VALUES (?,1,?,?)`;
+        
+        sql = `INSERT INTO tasks ( text,score,type_id, test_id) VALUES (?,1,?,?)`;
         db.query(sql, [tasks[i].question,tasks[i].questionType,dolgozatid], (err, datatask) => {
         if (err) {
             console.error(err);
@@ -202,9 +199,12 @@ console.log(formattedDate);
   
 
 app.post('/receiveuncompletedtests', (req, res) => {
-    const sql = 'SELECT * FROM usertests WHERE UserID = ? and CorrectState = 0';
+    const sql = 'SELECT * FROM usertests WHERE UserID = ? and Completed = 0';
     db.query(sql, [req.body.useruniqueid], (err, data) => {
-        
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
         return res.json(data)
 
     
@@ -245,7 +245,76 @@ app.post('/receivetestanswerswriting', (req, res) => {
 })
 
 
+app.post('/senduseranswers', (req, res) => {
+    let answerslength = req.body.answers.length
+    for (let i=0;i<answerslength;i++ )
+    {
+        sql = `INSERT INTO useranswer ( UserTestId,AnswerId, TaskId) VALUES (?,?,?)`;
+        db.query(sql, [req.body.answers[i].UserTestId,req.body.answers[i].AnswerId,req.body.answers[i].TaskId], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }})
+    
+        
+        
+    }
 
+    sql = ` UPDATE usertests SET Completed = 1  WHERE id = ?`;
+    db.query(sql, [req.body.usertestid], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }})
+
+    
+})
+
+app.post('/classes', (req, res) => {
+    const sql = 'SELECT ClassName FROM class';
+    db.query(sql, [], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
+
+
+app.post('/teacherusertests', (req, res) => {
+    const sql = 'SELECT UserID,TestId FROM usertests WHERE Completed = 1';
+    db.query(sql, [], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
+
+
+app.post('/teachertests', (req, res) => {
+    const sql = 'SELECT Name FROM tests WHERE id=? AND class = ? AND Subject = ? AND User_Id = ?';
+    db.query(sql, [req.body.userTestId, req.body.selectedClass, req.body.selectedSubject, req.body.creatorid], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
+        return res.json(data)
+        
+
+    
+    })
+})
+
+app.post('/usernames', (req, res) => {
+    const sql = 'SELECT Username FROM users WHERE id = ?';
+    db.query(sql, [req.body.UserId], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
 
 
 

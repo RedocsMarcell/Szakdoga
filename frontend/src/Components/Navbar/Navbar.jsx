@@ -49,12 +49,12 @@ function Navbar() {
    
       <div className="navbar-icon" onClick={navigateToHome}>
         {/* Icon placeholder */}
-        <img src="../favicon.ico" alt="navbar-icon" />
+        <img src="../../favicon.ico" alt="navbar-icon" />
       </div>
       <div className="navbar-profile">
       
         {/* Profile picture placeholder */}
-        <img src="../favicon.ico" alt="navbar-icon" onClick={toggleMenu}/>  
+        <img src="../../favicon.ico" alt="navbar-icon" onClick={toggleMenu}/>  
       </div>
       {menuOpen && (
         <div className="profile-menu">

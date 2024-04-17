@@ -37,6 +37,7 @@ const ClassEditor = () => {
         />
         <button onClick={handleAddClass}>Add Class</button>
       </div>
+      
     </div>
   );
 };

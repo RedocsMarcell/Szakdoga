@@ -1,6 +1,7 @@
 import Navbar from '../../Components/Navbar/Navbar';
 import './PasswordChange.css';
 import React, { useState } from 'react';
+import Footer from '../../Components/Footer/Footer';
 
 const PasswordChange = () => {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -79,7 +80,7 @@ const PasswordChange = () => {
       <button type="submit">Jelszó megváltoztatása</button>
     </form>
 
-
+    <Footer/>
 
     </div>
 

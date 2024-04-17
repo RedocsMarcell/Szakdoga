@@ -36,17 +36,17 @@ const LoginForm = () => {
     
     <div className='fulllogin'>
       <div className="Login">
-        <form onSubmit={handleSubmit}>
+        <form className="form"   onSubmit={handleSubmit}>
           <h1>Space Teszt <img src='favicon.ico' className='kep' width={30} alt="logo" /></h1>
 
           <div className="input-box">
             <input type="text" value={username} placeholder='Felhasználónév' required onChange={e => setText(e.target.value)} />
-            <FaUserAstronaut className='icon' />
+            
           </div>
 
-          <div className="input-box">
+          <div className="input-box" >
             <input type="password" placeholder='Jelszó' required onChange={e => setPassword(e.target.value)} />
-            <FaLock className='icon' />
+            
           </div>
 
           <div className="remember-forgot">

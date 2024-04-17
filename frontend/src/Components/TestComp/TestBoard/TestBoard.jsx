@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './TestBoard.css';
 import TrueFalse from '../Tasks/TrueFalse/TrueFalse';
 import OneAnswer from '../Tasks/Oneanswer/OneAnswer';
@@ -16,6 +16,22 @@ function TestBoard() {
     const[tasks, setTask] = useState ([]);
     const [showOptions, setShowOptions] = useState(false);
     const [keyid,setKeyId] = useState(1)
+    const [classes,setClasses] = useState([])
+
+
+    useEffect(() => {
+        const fetchClasses = async () => {
+          try {
+            const response = await axios.post('http://localhost:8081/classes', {  });
+            console.log(response.data)
+            setClasses(response.data);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        fetchClasses();
+      }, []);
 
     const addTask = (questionTypeNumber) => {
 
@@ -120,16 +136,17 @@ function TestBoard() {
                         <select id="class" value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)}>
                             <option value="">Válassz osztályt...</option>
                             {}
-                            <option value="10.A">10.A</option>
-                            <option value="11.A">11.A</option>
-                            <option value="12.A">12.A</option>
+                            {classes.length>0 && classes.map((classItem, index) => (
+                             <option key={index} value={classItem.ClassName}>{classItem.ClassName}</option>
+                            ))}
                         </select>
                     </div>
                     <div className="input-group">
                         <label htmlFor="subject">Tantárgy:</label>
                         <select id="subject" value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)}>
-                            <option value="">Válassz tantárgyat...</option>
+                            <option  value="">Válassz tantárgyat...</option>
                             {}
+                            
                             <option value="Matematika">Matematika</option>
                             <option value="Irodalom">Irodalom</option>
                             <option value="Biologia">Biologia</option>

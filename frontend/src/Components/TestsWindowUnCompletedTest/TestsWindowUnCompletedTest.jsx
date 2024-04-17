@@ -2,10 +2,10 @@ import React from 'react'
 import './TestsWindowUnCompletedTest'
 import { Link  } from 'react-router-dom';
 
-const TestsWindowUnCompletedTest = ({ name, date, score,id }) => {
+const TestsWindowUnCompletedTest = ({ name, date, score,id,usertestid }) => {
 
     return (
-      <Link to={`/TestWriter/${id}`} className="TestWindow">
+      <Link to={`/TestWriter/${id}/${usertestid}`} className="TestWindow">
       
      
        

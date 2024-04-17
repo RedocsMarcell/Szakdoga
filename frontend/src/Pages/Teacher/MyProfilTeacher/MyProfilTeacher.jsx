@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './MyProfilTeacher.css';
+import Footer from '../../../Components/Footer/Footer';
 
 const MyProfilTeacher = () => {
     const [profileData, setProfileData] = useState({});

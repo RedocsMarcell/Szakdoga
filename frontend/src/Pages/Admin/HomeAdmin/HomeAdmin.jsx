@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './HomeAdmin.css';
+import Footer from '../../../Components/Footer/Footer';
 
 const HomeAdmin = () => {
   return (
@@ -10,6 +11,7 @@ const HomeAdmin = () => {
         <Link to="/UserEditor" className="editor">UserEditor</Link>
         
       </div>
+      <Footer/>
     </div>
   );
 }

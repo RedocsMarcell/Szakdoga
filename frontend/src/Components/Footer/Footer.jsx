@@ -7,8 +7,8 @@ const Footer = () => {
       <div className="footer">
       <div className="content"></div>
         <div className="footer-content">
-          <p>Ez egy egyszerű footer példa</p>
-          <p>Készítette: Te</p>
+          
+          <p>© 2024 SpaceTeszt™</p>
         </div>
       </div>
     </div>

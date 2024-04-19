@@ -40,7 +40,7 @@ function App() {
        <Route path='/HomeTeacher' element={<HomeTeacher />}></Route>
        <Route path='/MyTestsTeacher' element={<MyTestsTeacher />}></Route>
        <Route path='/TestMaker' element={<TestMaker />}></Route>
-       <Route path='/TestResult' element={<TestResult />}></Route>
+       <Route path='/TestResult/:id/:usertestid' element={<TestResult />}></Route>
        <Route path='/MyProfilTeacher' element={<MyProfilTeacher />}></Route>
        <Route path='/UncompletedTest' element={<UncompletedTest />}></Route>
        

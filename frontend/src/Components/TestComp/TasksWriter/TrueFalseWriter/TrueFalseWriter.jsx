@@ -35,12 +35,12 @@ const TrueFalse = ({questionNumber,question, onResponse,answers,taskid}) => {
     
       <div className="true-false-container">
         <label className="question">
-          Question {questionNumber}:
-          <div>{question}</div>
+          <div><div className= "Task-serial-number">  {questionNumber} . </div>
+          {question}</div>
         </label>
         <div className="answer-buttons">
-          <button onClick={handleTrue} className={`${answer ? 'selected' : ''}`}>True</button>
-          <button onClick={handleFalse} className={`${answer === false ? 'selected' : ''}`}>False</button>
+          <button onClick={handleTrue} className={`${answer ? 'selected' : ''}`}>Igaz</button>
+          <button onClick={handleFalse} className={`${answer === false ? 'selected' : ''}`}>Hamis</button>
         </div>
 
         <br/>

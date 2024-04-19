@@ -1,67 +1,65 @@
 .one-answers-container {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    position: relative;
-  }
-  
-  .question {
-    flex-grow: 1; 
-    margin-right: 10px;
-  }
-  
-  .options {
-    margin-top: 10px;
-  }
-  
-  .options input {
-    margin-bottom: 5px;
-  }
-  
-  .options label {
-    margin-left: 5px;
-  }
-  
-  .answer-buttons {
-    display: flex;
-    position: absolute;
-    right: 100px;
-  }
-  
-  .answer-buttons button {
-    flex: 1; 
-    margin-right: 5px;
-    text-align: center;
-  }
-  
-  .save-button {
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #6bf178; /* Zöld szín a mentés gombnak */
-  }
-  
-  .remove-question-button-one {
-    background-color: #ff7f7f;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-  }
-  
-  .selected {
-    background-color: #007bff;
-    color: white;
-  }
-  
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  border: 2px solid #ccc;
+  border-radius: 20px; /* Sarkok lekerekítése */
+  padding: 20px;
+  position: relative;
+  width: 100%; /* Ensure the container takes up the entire width */
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 2px solid #ccc;
+  border-radius: 20px; /* Sarkok lekerekítése */
+  padding: 10px;
+  width: 100%;
+}
+
+.answerwriter {
+  flex-grow: 1;
+  width: 200px;
+  overflow-wrap: break-word;
+}
+
+.options input[type="radio"] {
+  margin-right: 10px; /* Add some space between the radio buttons and the answer text */
+  width: 20px; /* Set the width of the radio buttons */
+  height: 20px; /* Set the height of the radio buttons */
+  border: 2px solid #ccc;
+  border-radius: 50%; /* Kör alakú kerekítés */
+}
+
+.options label {
+  margin-left: 5px;
+  cursor: pointer; /* Mutató az opciókra */
+}
+
+.option-row div {
+  flex-grow: 1; /* Hogy a rádiógombok és a szövegek egy sorban legyenek */
+}
+
+.option-row input[type="radio"] {
+  transform: scale(1.5); /* Nagyítás a rádiógombokhoz */
+}
+
+.questiondiv {
+  display: flex;
+  align-items: center;
+  border: 5px solid #ccc;
+  border-radius: 20px; /* Sarkok lekerekítése */
+  padding: 20px;
+  width: 50%;
+  justify-content: center; /* Center horizontally */
+  margin: auto;
+  font-weight: bold; /* Set the text to bold */
+}
+
+.radiowriter{
+  margin-top: 5px;
+  margin-right: 5px;
+}

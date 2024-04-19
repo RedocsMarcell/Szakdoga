@@ -1,58 +1,79 @@
 .multiple-choice-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    position: relative;
-}
-
-.question {
-    flex-grow: 1;
-    margin-bottom: 10px;
-}
-
-.answer-buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-}
-
-.answer-buttons button {
-    margin-left: 5px;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.save-button {
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #6bf178;
-    display: none; /* Save gomb elrejtése */
+  margin-top: 20px; /* Tetejétől való távolság */
+  display: flex; /* Flexbox elrendezés */
+  flex-direction: column; /* Fő tengely iránya */
+  align-items: center; /* Tartalom vízszintes középre igazítása */
+  justify-content: space-between; /* Tartalom függőleges középre igazítása */
+  border: 5px solid #ccc; /* 2px vastag szegély a tartalom körül */
+  border-radius: 20px; /* Sarkok lekerekítése */
+  padding: 20px; /* Belső tér a tartalom és a szegély között */
+  position: relative; /* Relatív pozícionálás */
+  width: 100%; /* Teljes szélesség elfoglalása */
 }
 
 .answer-container {
-    margin-bottom: 10px; /* Példaként hozzáadott margin a válaszlehetőségek közötti távolsághoz */
+  display: flex; /* Flexbox elrendezés */
+  align-items: center; /* Tartalom vízszintes középre igazítása */
+  margin-bottom: 10px; /* Alsó margó */
+  border: 2px solid #ccc; /* 2px vastag szegély a tartalom körül */
+  border-radius: 50px; /* Sarkok lekerekítése */
+  padding: 15px; /* Belső tér a tartalom és a szegély között */
+  width: 100%; /* Teljes szélesség elfoglalása */
 }
 
-.remove-answer-button {
-    background-color: #ff7f7f;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 5px; /* Példaként hozzáadott margin a gombok alatti távolsághoz */
+.answerwriter {
+  flex-grow: 1; /* Rugalmas növekedés az elrendezésben */
+  width:0; /* Fix szélesség */
+  overflow-wrap: break-word; /* Túlcsordulás megengedése szóközök mentén */
+  display: flex;
 }
 
-.selected {
-    background-color: #007bff;
-    color: white;
+.options input[type="radio"] {
+  margin-right: 10px; /* Jobb margó */
+  width: 20px; /* Szélesség */
+  height: 20px; /* Magasság */
+  border: 2px solid #ccc; /* 2px vastag szegély */
+  border-radius: 50%; /* Kör alakú kerekítés */
+}
+
+.options label {
+  margin-left: 5px; /* Bal margó */
+  cursor: pointer; /* Mutató a kurzor felett */
+}
+
+.option-row div {
+  flex-grow: 1; /* Rugalmas növekedés az elrendezésben */
+}
+
+.radiobutton {
+  transform: scale(1.5); /* Méretezés */
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.questiondiv {
+  display: flex; /* Flexbox elrendezés */
+  align-items: center; /* Tartalom vízszintes középre igazítása */
+  border: 5px solid #ccc; /* 5px vastag szegély a tartalom körül */
+  border-radius: 20px; /* Sarkok lekerekítése */
+  padding: 50px; /* Belső tér a tartalom és a szegély között */
+  width: 100%; /* Szélesség */
+  justify-content: center; /* Tartalom vízszintes középre igazítása */
+  margin: auto; /* Automatikus margó */
+  font-weight: bold; /* Félkövér betűtípus */
+}
+
+.Task-serial-number {
+  position: absolute; /* Abszolút pozícionálás */
+  top: 10px; /* Felső távolság */
+  left: 10px; /* Bal távolság */
+  border: 1px solid black; /* 1px vastag szegély */
+  border-radius: 50%; /* Kör alakú kerekítés */
+  padding: 10px; /* Belső tér a tartalom és a szegély között */
+  background-color: lightblue; /* Háttérszín */
+  font-size: 15px; /* Betűméret */
+}
+
+.radiowriter {
+  margin-top: 10px; /* Felső margó */
 }

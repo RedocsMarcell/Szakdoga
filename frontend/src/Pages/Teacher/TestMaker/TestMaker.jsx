@@ -31,7 +31,7 @@ const TestMaker = () => {
       
      <TestBoard/>
      
-     <Footer/>
+    
 
     </div>
      

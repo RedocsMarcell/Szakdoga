@@ -47,26 +47,34 @@ const MultipleAnswers = ({questionNumber, onResponse,removeTask}) => {
   return (
     <div className="multiple-choice-container">
       <label>
-        Question {questionNumber}:
-        <input type="text" value={question} onChange={handleQuestionChange} />
+      <div className="Task-serial-number">{questionNumber} . </div>
+        <input type="text"
+           value={question}
+           onChange={handleQuestionChange}
+           placeholder={`Ide irja be a kérdést`}
+        />
+        
       </label>
       <br />
       {answers.map((answer, index) => (
         <div key={index} className="answer-container">
           <label>
-            Answer {index + 1}:
+            
             <input
+              className='Answer'
               type="text"
               value={answer}
               onChange={(e) => handleAnswerChange(index, e)}
-            />
+              placeholder={`Válasz`}
+            /> 
+
           </label>
           <input type="checkbox" onChange={() => handleCorrectAnswerChange(index)}/>
           <button className="remove-answer-button" onClick={() => removeAnswerInput(index)}>X</button>
         </div>
       ))}
       <br />
-      <button onClick={addAnswerInput}>Add Answer</button>
+      <button onClick={addAnswerInput}> Válasz hozzáadás </button>
       <br />
       <button className="save-button2" onClick={() => handleSave(question,answers,questionNumber,correctanswers)} >Save</button>
       <br/>

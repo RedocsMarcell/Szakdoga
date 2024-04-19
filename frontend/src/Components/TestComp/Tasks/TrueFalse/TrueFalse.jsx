@@ -33,8 +33,13 @@ const TrueFalse = ({questionNumber,questionvalue, onResponse, removeTask}) => {
     
       <div className="true-false-container">
         <label className="question">
-          Question {questionNumber}:
-          <input type="text" value={`${question === " " ? questionvalue : question}`} onChange={handleQuestionChange} />
+        <div className="Task-serial-number">{questionNumber} . </div>
+        
+          <input type="text" 
+          placeholder={`Ide irja a választ`}
+          onChange={handleQuestionChange} 
+          />
+
         </label>
         <div className="answer-buttons">
           <button onClick={handleTrue} className={`${answer ? 'selected' : ''}`}>True</button>

@@ -2,8 +2,9 @@ import React, { useState,useEffect }from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../../../Components/Navbar/Navbar';
 import './HomeStudent.css';
-import Window from '../../../Components/Window/Window';
 import Footer from '../../../Components/Footer/Footer';
+import WLeft from '../../../Components/Window/WLeft/WLeft';
+import WRight from '../../../Components/Window/WRight/WRight';
 
 const HomeStudent = () => {
 
@@ -37,13 +38,15 @@ const HomeStudent = () => {
       <Navbar />
       
       <div className='DivLeft'>
+       
         <Link to="http://localhost:3000/MyTestsStudent">
-          <Window className='LeftWindow'/>
+          <WLeft className='LeftWindow'/>
         </Link>
+        
       </div>
       <div className='DivRight'>
         <Link to="http://localhost:3000/UncompletedTest">
-          <Window className='RightWindow'/>
+          <WRight className='RightWindow'/>
         </Link>
       </div>
       <Footer/>

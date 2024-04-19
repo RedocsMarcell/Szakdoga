@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
-import { FaUserAstronaut } from "react-icons/fa6";
-import { FaLock } from "react-icons/fa";
 import axios from 'axios';
 
 
@@ -49,9 +47,7 @@ const LoginForm = () => {
             
           </div>
 
-          <div className="remember-forgot">
-            <a href="#">Elfelejtetted a jelszavad?</a>
-          </div>
+          
 
           <button type="submit">Bejelentkezés</button>
 

@@ -159,7 +159,7 @@ function TestBoard() {
                         <input type="text" id="quizTitle" value={quizTitle} onChange={(e) => setQuizTitle(e.target.value)} />
                     </div>
                     <div className="input-group">
-                        <label htmlFor="quizTime">Dolgozat időtartama (perc):</label>
+                        <label htmlFor="quizTime">Dolgozat időtartama:</label>
                         <input type="text" id="quizTime" placeholder='perc' value={quizTime} onChange={(e) => setQuizTime(e.target.value)} />
                     </div>
                 </div>

@@ -2,10 +2,10 @@ import React from 'react';
 import './TestsWindow.css';
 import { Link  } from 'react-router-dom';
 
-const TestsWindow = ({ name, date, score }) => {
+const TestsWindow = ({ name, date, score,id,usertestid }) => {
 
   return (
-    <Link to="/TestResult" className="TestWindow">
+    <Link to={`/TestResult/${id}/${usertestid}`} className="TestWindow">
     
    
      

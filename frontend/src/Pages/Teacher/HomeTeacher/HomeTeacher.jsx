@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../../Components/Navbar/Navbar';
 import './HomeTeacher.css';
-import Window from '../../../Components/Window/Window';
+import Window from '../../../Components/Window/WRight/WRight';
 import { Link } from 'react-router-dom';
 import Footer from '../../../Components/Footer/Footer';
 

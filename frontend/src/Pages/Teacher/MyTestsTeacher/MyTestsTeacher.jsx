@@ -58,7 +58,7 @@ const MyTestsTeacher = () => {
       const fetchUsertests = async () => {
         try {
           const response = await axios.post('http://localhost:8081/teacherusertests', {  });
-          console.log(response.data)
+          console.log("usertests",response.data)
           setUsertests(response.data);
         } catch (error) {
           console.error(error);
@@ -82,7 +82,7 @@ const MyTestsTeacher = () => {
             
             const testsForUserTest = response.data;
             
-            console.log(response.data)
+            console.log("tests",response.data)
             setTests(prevTests => [...prevTests, ...testsForUserTest]);
             setSelectedClass("")
             setSelectedSubject("")
@@ -173,7 +173,7 @@ const MyTestsTeacher = () => {
 
    
     { tests.length>0 && usernames.length>0  ? (tests.map((test, index) => (
-       <TestsWindow key={index} name ={test.Name}  date={usernames[index] ? usernames[index].Username : ''}  />
+       <TestsWindow key={index} name ={test.Name}  date={usernames[index] ? usernames[index].Username : ''} id={usertests[index].TestId} usertestid={usertests[index].id}  />
       ))
     ) : (
       <p>No tests available</p>

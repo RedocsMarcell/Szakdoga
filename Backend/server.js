@@ -74,7 +74,7 @@ app.post('/dolgozatok', (req, res) =>{
     const day = currentDate.getDate(); // Get the day of the month (1-31)
     const formattedDate = `${year}.${month < 10 ? '0' : ''}${month}.${day < 10 ? '0' : ''}${day}`;
 
-console.log(formattedDate); 
+
    
     const tasks = req.body.tasks
     const taskdetails = req.body.taskdetails
@@ -102,7 +102,7 @@ console.log(formattedDate);
             console.error(err);
             return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
        }
-       console.log(usersdata)
+       
 
        for (let i=0;i<usersdata.length;i++)
        {
@@ -138,6 +138,7 @@ console.log(formattedDate);
         //válaszok
         if (tasks[i].questionType ==1)
         {            
+            //truefalse
             sql = `INSERT INTO answers ( text,correct, task_id) VALUES ('igaz',${tasks[i].correctanswer  ? 1 : 0},${taskid})`;
             db.query(sql, [req.body.tasks], (err, dataanswer) => {
                 if (err) {
@@ -154,6 +155,8 @@ console.log(formattedDate);
         if (tasks[i].questionType ==2)
         {
             
+            
+            //multianswer
             for (let j = 0; j<tasks[i].answer.length;j++)
             {
                 
@@ -169,7 +172,7 @@ console.log(formattedDate);
 
         if(tasks[i].questionType ==3)
         {
-            console.log("asd3")
+            //oneanswer
             for (let j = 0; j<tasks[i].answer.length;j++)
             {
                 sql = `INSERT INTO answers ( text,correct, task_id) VALUES (?,${tasks[i].correctanswer == j+1 ? 1 : 0},${taskid})`;
@@ -282,7 +285,7 @@ app.post('/classes', (req, res) => {
 
 
 app.post('/teacherusertests', (req, res) => {
-    const sql = 'SELECT UserID,TestId FROM usertests WHERE Completed = 1';
+    const sql = 'SELECT UserID,TestId,id FROM usertests WHERE Completed = 1';
     db.query(sql, [], (err, data) => {
         
         return res.json(data)
@@ -317,7 +320,67 @@ app.post('/usernames', (req, res) => {
 })
 
 
+app.post('/receivecompletedtests', (req, res) => {
+    const sql = 'SELECT * FROM usertests WHERE UserID = ? and Completed = 1';
+    db.query(sql, [req.body.useruniqueid], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
+        return res.json(data)
 
+    
+    })
+})
+
+
+app.post('/receivecompletedtestsoriginal', (req, res) => {
+    const sql = 'SELECT * FROM tests WHERE id = ? ';
+    db.query(sql, [req.body.testid], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
+
+
+app.post('/testresulttasks', (req, res) => {
+    const sql = 'SELECT * FROM tasks WHERE Test_id = ? ';
+    db.query(sql, [req.body.id], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
+        return res.json(data)
+
+    
+    })
+})
+
+app.post('/receivetestanswersresult', (req, res) => {
+    const sql = 'SELECT * FROM answers WHERE Task_id = ?';
+    db.query(sql, [req.body.taskid], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
+
+
+app.post('/receivetestuseranswersresult', (req, res) => {
+    const sql = 'SELECT * FROM useranswer WHERE TaskId = ? ';
+    db.query(sql, [req.body.taskid], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
+        return res.json(data)
+
+    
+    })
+})
 
 
 

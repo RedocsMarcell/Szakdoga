@@ -79,7 +79,7 @@ function TestBoardWriter() {
     let answerlist = []
     
     answers.forEach(e => { answerlist.push(e.id) });
-    console.log("valaszok",answerlist)
+    
     const  newuseranswer = [...useranswers]
     const filtereduseranswers = newuseranswer.filter (e => !answerlist.includes(e.AnswerId))
     let newadduseranswers = []
@@ -97,6 +97,10 @@ function TestBoardWriter() {
 
 
   }
+
+  useEffect (() => {
+    console.log("asd",useranswers)
+  },[useranswers])
 
   
     

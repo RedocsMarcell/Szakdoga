@@ -4,6 +4,7 @@ import Logout from '../Logout/Logout'
 
 
 
+
 function Navbar() {
   // State a lenyíló menü kezeléséhez
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,7 +55,7 @@ function Navbar() {
       <div className="navbar-profile">
       
         {/* Profile picture placeholder */}
-        <img src="../../favicon.ico" alt="navbar-icon" onClick={toggleMenu}/>  
+        <img src="../../profil_astronaut_icon.png" alt="navbar-icon" onClick={toggleMenu}/>  
       </div>
       {menuOpen && (
         <div className="profile-menu">

@@ -33,12 +33,12 @@ const handleAnswerChange = (index, e) => {
     <div className="one-answers-container">
         <div className="question">
           <label>
-          Question {questionNumber}:
+          <div className="Task-serial-number">{questionNumber} . </div>
           <input
             type="text"
             value={question}
             onChange={handleQuestionChange}
-            placeholder="Enter your question"
+            placeholder={`Ide irja be a kérdést`}
           />
           </label>
           <div className="options">
@@ -47,7 +47,7 @@ const handleAnswerChange = (index, e) => {
                   type="text"
                   value={answers[0]}
                   onChange={(e) => handleAnswerChange(0, e)}
-                  placeholder={`Answer 1`}
+                  placeholder={`Ide irja a választ`}
                 />
                 <label>
                   <input
@@ -55,14 +55,15 @@ const handleAnswerChange = (index, e) => {
                     checked={correctanswers === 1}
                     onChange={() => handleCorrectAnswerChange(0)}
                   />
-                  Correct
+                  Helyes válasz
                 </label>
+
                 <br/>
                 <input
                   type="text"
                   value={answers[1]}
                   onChange={(e) => handleAnswerChange(1, e)}
-                  placeholder={`Answer 2`}
+                  placeholder={`Ide irja a választ`}
                 />
                 <label>
                 
@@ -71,14 +72,14 @@ const handleAnswerChange = (index, e) => {
                     checked={correctanswers === 2}
                     onChange={() => handleCorrectAnswerChange(1)}
                   />
-                  Correct
+                  Helyes válasz
                 </label>
                 <br/>
                 <input
                   type="text"
                   value={answers[2]}
                   onChange={(e) => handleAnswerChange(2, e)}
-                  placeholder={`Answer 3`}
+                  placeholder={`Ide irja a választ`}
                 />
                 <label>
                   <input
@@ -86,14 +87,14 @@ const handleAnswerChange = (index, e) => {
                     checked={correctanswers === 3}
                     onChange={() => handleCorrectAnswerChange(2)}
                   />
-                  Correct
+                  Helyes válasz
                 </label>
                 <br/>
                 <input
                   type="text"
                   value={answers[3]}
                   onChange={(e) => handleAnswerChange(3, e)}
-                  placeholder={`Answer 4`}
+                  placeholder={`Ide irja a választ`}
                 />
                 <label>
                   <input
@@ -101,7 +102,7 @@ const handleAnswerChange = (index, e) => {
                     checked={correctanswers === 4}
                     onChange={() => handleCorrectAnswerChange(3)}
                   />
-                  Correct
+                  Helyes válasz
                 </label>
               
           </div>

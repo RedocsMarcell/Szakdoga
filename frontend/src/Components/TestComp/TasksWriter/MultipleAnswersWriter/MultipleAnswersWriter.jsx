@@ -34,22 +34,21 @@ const MultipleAnswersWriter = ({ questionNumber, question, answers, onResponse,t
 
 
     return (
-        <div className="multiple-choice-container">
-            <label className='question' >
-                <div className= "Task-serial-number">  {questionNumber} . </div>
-                <div className= "questiondiv" > {question} </div>   
+        <div className="MultipleWriter-Container">
+            <label className='Label-MultipleWriter-Question'>
+                <div className= "MultipleWriter-Task-serial-number">  {questionNumber} . </div>
+                <div className='MultipleWriter-Question'> {question} </div>   
             </label>
-            
+            <br />
             {answers.map((answer, index) => (
-                <div key={index} className="answer-container">
-                    <label className='answerwriter'>
-                        
-                        <div className='answerwriter' >
+                <div key={index} className="MultipleWriter-Answer-Container">
+                    <label className='Label-MultipleWriter-Answer '>
+                       
+                        <div>
                             {answer.text}
-                        
-                        <input 
-                        className='radiowriter'
-                        type="radio"
+                        <input
+                        className='Input-MultipleWriter-Answer'
+                        type="checkbox"
                         onChange = {() =>handleChange(answer.id)}
                         readOnly
                     />

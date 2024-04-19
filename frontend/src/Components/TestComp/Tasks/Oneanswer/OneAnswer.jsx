@@ -30,87 +30,97 @@ const handleAnswerChange = (index, e) => {
   };
 
   return (
-    <div className="one-answers-container">
-        <div className="question">
-          <label>
-          <div className="Task-serial-number">{questionNumber} . </div>
+    <div className="OneAnswers-Container">
+        <div className="Question-OneAnswer">
+          <label className='Label-OneAnswer-Question'>
+          <div className="OneAnswer-Task-Serial-Number">{questionNumber} . </div>
           <input
+            className='Input-Question-OneAnswer'
             type="text"
             value={question}
             onChange={handleQuestionChange}
             placeholder={`Ide irja be a kérdést`}
           />
           </label>
-          <div className="options">
+          <div className="Options-OneAnswer">
             
                 <input
+                  className='Input-OneAnswer-Answers'
                   type="text"
                   value={answers[0]}
                   onChange={(e) => handleAnswerChange(0, e)}
                   placeholder={`Ide irja a választ`}
                 />
-                <label>
+                <label className='Label-OneAnswer-CorrectAnswers'>
                   <input
+                    className='Input-OneAnswer-CorrectAnswers'
                     type="radio"
                     checked={correctanswers === 1}
                     onChange={() => handleCorrectAnswerChange(0)}
                   />
-                  Helyes válasz
+                  
                 </label>
 
                 <br/>
                 <input
+                  className='Input-OneAnswer-Answers'
                   type="text"
                   value={answers[1]}
                   onChange={(e) => handleAnswerChange(1, e)}
                   placeholder={`Ide irja a választ`}
                 />
-                <label>
+                <label className='Label-OneAnswer-CorrectAnswers'>
                 
-                  <input
+                  <input 
+                    className='Input-OneAnswer-CorrectAnswers'
                     type="radio"
                     checked={correctanswers === 2}
                     onChange={() => handleCorrectAnswerChange(1)}
                   />
-                  Helyes válasz
+                  
                 </label>
                 <br/>
+
                 <input
+                  className='Input-OneAnswer-Answers'
                   type="text"
                   value={answers[2]}
                   onChange={(e) => handleAnswerChange(2, e)}
                   placeholder={`Ide irja a választ`}
                 />
-                <label>
+                <label className='Label-OneAnswer-CorrectAnswers'>
                   <input
+                  className='Input-OneAnswer-CorrectAnswers'
                     type="radio"
                     checked={correctanswers === 3}
                     onChange={() => handleCorrectAnswerChange(2)}
                   />
-                  Helyes válasz
+                 
                 </label>
                 <br/>
                 <input
+                  className='Input-OneAnswer-Answers'
                   type="text"
                   value={answers[3]}
                   onChange={(e) => handleAnswerChange(3, e)}
                   placeholder={`Ide irja a választ`}
                 />
-                <label>
+                <label className='Label-OneAnswer-CorrectAnswers'>
                   <input
+                    className='Input-OneAnswer-CorrectAnswers'
                     type="radio"
                     checked={correctanswers === 4}
                     onChange={() => handleCorrectAnswerChange(3)}
                   />
-                  Helyes válasz
+                 
                 </label>
               
           </div>
           
           <br/>
-          <button className='save-button2' onClick={() => handleSave(question,answers,questionNumber,correctanswers)} >Save</button>
+          <button className='Save-Button' onClick={() => handleSave(question,answers,questionNumber,correctanswers)} >Save</button>
           <br/>
-          <button onClick={handleRemove} className="remove-question-button-one">X</button>
+          <button onClick={handleRemove} className="Remove-Button-OneAnswer">X</button>
         </div>
     
     </div>

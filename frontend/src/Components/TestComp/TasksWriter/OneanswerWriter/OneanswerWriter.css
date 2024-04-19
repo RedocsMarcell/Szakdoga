@@ -1,65 +1,69 @@
-.one-answers-container {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center horizontally */
-  border: 2px solid #ccc;
-  border-radius: 20px; /* Sarkok lekerekítése */
-  padding: 20px;
+.OneanswerWriter-container {
   position: relative;
-  width: 100%; /* Ensure the container takes up the entire width */
-}
-
-.option-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
   border: 2px solid #ccc;
-  border-radius: 20px; /* Sarkok lekerekítése */
-  padding: 10px;
-  width: 100%;
-}
-
-.answerwriter {
-  flex-grow: 1;
-  width: 200px;
-  overflow-wrap: break-word;
-}
-
-.options input[type="radio"] {
-  margin-right: 10px; /* Add some space between the radio buttons and the answer text */
-  width: 20px; /* Set the width of the radio buttons */
-  height: 20px; /* Set the height of the radio buttons */
-  border: 2px solid #ccc;
-  border-radius: 50%; /* Kör alakú kerekítés */
-}
-
-.options label {
-  margin-left: 5px;
-  cursor: pointer; /* Mutató az opciókra */
-}
-
-.option-row div {
-  flex-grow: 1; /* Hogy a rádiógombok és a szövegek egy sorban legyenek */
-}
-
-.option-row input[type="radio"] {
-  transform: scale(1.5); /* Nagyítás a rádiógombokhoz */
-}
-
-.questiondiv {
-  display: flex;
-  align-items: center;
-  border: 5px solid #ccc;
-  border-radius: 20px; /* Sarkok lekerekítése */
+  border-radius: 10px;
   padding: 20px;
-  width: 50%;
-  justify-content: center; /* Center horizontally */
-  margin: auto;
-  font-weight: bold; /* Set the text to bold */
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
 }
 
-.radiowriter{
-  margin-top: 5px;
-  margin-right: 5px;
+.Label-OneanswerWriter-Question {
+  display: block;
+  margin-bottom: 10px;
+  
 }
+
+.OneanswerWriter-Task-serial-number {
+  font-weight: bold;
+}
+
+
+
+.Input-OneanswerWriter-CorrectAnswer {
+  position: relative;
+  margin-left: 70%;
+  transform: scale(2);
+  border: 1px solid #ccc;
+  bottom: -2.5px;
+  margin-top: 1%;
+  
+}
+
+.OneanswerWriter-Options {
+  position: relative;
+  
+  
+}
+
+.OneanswerWriter-Answers {
+  padding: 20px;
+  margin-bottom: 10px;
+  border: 1px solid darkgray;
+  border-radius: 5cm;
+  
+  
+}
+
+.Label-OneanswerWriter-CorrectAnswer {
+  position:absolute;
+  right: 25px;
+  
+}
+
+.OneanswerWriter-Question {
+  border: 2px solid darkgray; /* increase border thickness */
+  border-radius: 10px; /* increase border radius */
+  font-weight: bold; /* make text bold */
+  width: 70%; /* reduce the width of the div */
+  margin: 20px auto; /* center-align the div and add some space around it */
+  padding: 10px; /* add padding inside the div */
+  background-color: #f0f0f0; /* add a light gray background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* add a subtle shadow */
+  text-align: justify; /* justify the text */
+  word-wrap: break-word; /* allow long words to break and wrap */
+  position: left
+  ;
+}
+

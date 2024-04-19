@@ -80,8 +80,8 @@ app.post('/dolgozatok', (req, res) =>{
     const taskdetails = req.body.taskdetails
 
 
-    let sql = `INSERT INTO Tests ( name,date,subject,class,time,user_id   ) VALUES (?,?,?,?,?,1)`;
-    db.query(sql, [taskdetails.quiztitle,formattedDate,taskdetails.subject,taskdetails.class,taskdetails.quiztime], (err, data) => {
+    let sql = `INSERT INTO Tests ( name,date,subject,class,time,user_id   ) VALUES (?,?,?,?,?,?)`;
+    db.query(sql, [taskdetails.quiztitle,formattedDate,taskdetails.subject,taskdetails.class,taskdetails.quiztime,req.body.teacherid], (err, data) => {
     if (err) {
         console.error(err);
         return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
@@ -382,6 +382,74 @@ app.post('/receivetestuseranswersresult', (req, res) => {
     })
 })
 
+
+app.post('/testresulttesname', (req, res) => {
+    const sql = 'SELECT Name FROM tests WHERE id = ? ';
+    db.query(sql, [req.body.id], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
+        return res.json(data)
+
+    
+    })
+})
+
+app.post('/addclass', (req, res) => {
+    const sql = `INSERT INTO class ( ClassName) VALUES (?)`;
+    db.query(sql, [req.body.classname], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
+        return res.json(data)
+
+    
+    })
+})
+
+
+app.post('/deleteclass', (req, res) => {
+    db.query('SET FOREIGN_KEY_CHECKS = 0', (error, results) => {
+        if (error) {
+            console.error(error);
+            return res.json({ Error: 'Error disabling foreign key checks' });
+        }
+
+        const sql = "DELETE FROM class WHERE ClassName = ?";
+        db.query(sql, [req.body.classname], (err, data) => {
+            console.log(req.body.classname)
+            if (err) {
+                console.error(err);
+                return res.json({ Error: 'Error deleting class' });
+            }
+            
+            // Set foreign key checks back to 1
+            db.query('SET FOREIGN_KEY_CHECKS = 1', (fkError, fkResults) => {
+                if (fkError) {
+                    console.error(fkError);
+                    return res.json({ Error: 'Error enabling foreign key checks' });
+                }
+                
+                return res.json(data);
+            });
+        });
+    });
+});
+
+app.post('/adminusers', (req, res) => {
+    const sql = 'SELECT * FROM users';
+    db.query(sql, [], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
+
+
+  
 
 
 app.listen(8081, () => {

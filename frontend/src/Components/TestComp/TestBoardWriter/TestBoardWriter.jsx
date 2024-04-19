@@ -136,7 +136,7 @@ function TestBoardWriter() {
                     
                 })
               }}>
-                Dolgozat véglegesítés
+                Dolgozat Beküldése
                 </button>
                 </div>
 

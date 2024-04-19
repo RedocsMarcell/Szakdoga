@@ -1,59 +1,103 @@
-.true-false-container {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    position: relative;
-  }
-  
-  .question {
-    flex-grow: 1; 
-    margin-right: 10px;
-  }
-  
-  .answer-buttons {
-    display: flex;
-    position: absolute;
-    right: 100px;
-  }
-  
-  .answer-buttons button {
-    flex: 1; 
-    margin-right: 5px;
-    text-align: center; /* Szöveg középre igazítása a gombokon belül */
-  }
-  
+.TrueFalse-container {
+  position: relative; /* Az abszolút pozíciózás miatt */
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
 
-.save-button2 {
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+}
+
+.Label-TrueFalse-Question {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
   
-  .save-button {
-    background-color: #6bf178; /* Zöld szín a save gombnak */
-  }
+}
+
+.TrueFalse-Task-serial-number {
+  position: absolute;
+  font-weight: bold;
+  top: 20px;
+  left: 20px;
+
+}
+
+.Input-TrueFalse-Question {
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 38px;
+  margin-left: 75px;
+  margin-right: 75px;
+}
+
+.Answer-TrueFalse-Buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.Answer-TrueFalse-Buttons button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.Answer-TrueFalse-Buttons button:hover {
+  background-color: #0056b3;
+}
+
+.selected {
+  background-color: #0056b3;
+}
+
+
+
+.Remove-TrueFalse-Button {
+  position: absolute;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 50px;
+  padding: 10px;
+  cursor: pointer;
+  right: 10px;
+  top: 8px;
   
-  .remove-question-button-true {
-    background-color: #ff7f7f;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-  }
-  
-  .selected {
-    background-color: #007bff;
-    color: white;
-  }
-  
+}
+
+.Save-Button {
+  padding: 5px 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.Save-Button:hover {
+  background-color: #1e7e34;
+}
+
+.Answer-TrueFalse-Buttons button.selected {
+  background-color: rgb(59, 40, 167)
+}

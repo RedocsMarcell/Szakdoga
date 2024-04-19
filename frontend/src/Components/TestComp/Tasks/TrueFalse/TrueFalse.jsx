@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './TrueFalse.css';
 
-const TrueFalse = ({questionNumber,questionvalue, onResponse, removeTask}) => {
+const TrueFalse = ({questionNumber, questionValue, onResponse, removeTask}) => {
   const [question, setQuestion] = useState(' ');
   const [answer, setAnswer] = useState(null);
 
@@ -10,19 +10,19 @@ const TrueFalse = ({questionNumber,questionvalue, onResponse, removeTask}) => {
   };
 
   const handleTrue = () => {
-    if(question !=='') {
+    if(question !== '') {
       setAnswer(true);
     }
   };
 
   const handleFalse = () => {
-    if(question !=='') {
+    if(question !== '') {
       setAnswer(false);
     }
   };
 
-  const handleSave = (question, answer, questionNumber, correctanswer) => {
-    onResponse(question, answer, questionNumber, correctanswer);
+  const handleSave = () => {
+    onResponse(question, answer, questionNumber, answer);
   };
 
   const handleRemove = () => {
@@ -30,25 +30,20 @@ const TrueFalse = ({questionNumber,questionvalue, onResponse, removeTask}) => {
   };
 
   return (
-    
-      <div className="true-false-container">
-        <label className="question">
-        <div className="Task-serial-number">{questionNumber} . </div>
-        
-          <input type="text" 
-          placeholder={`Ide irja a választ`}
+    <div className="TrueFalse-container">
+      <div className="TrueFalse-Task-serial-number">{questionNumber} . </div>
+      <label className="Label-TrueFalse-Question">
+        <input className='Input-TrueFalse-Question' type="text" placeholder={`Ide írja a választ`}
+          value={question === " " ? questionValue : question} 
           onChange={handleQuestionChange} 
-          />
-
-        </label>
-        <div className="answer-buttons">
-          <button onClick={handleTrue} className={`${answer ? 'selected' : ''}`}>True</button>
-          <button onClick={handleFalse} className={`${answer === false ? 'selected' : ''}`}>False</button>
-        </div>
-        <button onClick={handleRemove} className="remove-question-button-true">X</button>
-        <br/>
-        <button className='save-button2' onClick={() => handleSave(question, answer, questionNumber, answer)}>Save</button>
-     
+        />
+      </label>
+      <div className="Answer-TrueFalse-Buttons">
+        <button onClick={handleTrue} className={`${answer ? 'selected' : ''}`}>True</button>
+        <button onClick={handleFalse} className={`${answer === false ? 'selected' : ''}`}>False</button>
+      </div>
+      <button className="Remove-TrueFalse-Button" onClick={handleRemove}>X</button>
+      <button className='Save-Button' onClick={handleSave}>Save</button>
     </div>
   );
 }

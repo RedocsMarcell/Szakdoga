@@ -15,73 +15,76 @@ function OneanswerWriter({ questionNumber, question, answers, onResponse, taskid
   }, [answer])
 
   return (
-    <div className="one-answers-container">
-      <div >
-        <label>
-        <div className="Task-serial-number">{questionNumber} . </div>
-          <div className='questiondiv'>
-            
-         {question}
+    <div className="OneanswerWriter-container">
+      <div>
+        <label className='Label-OneanswerWriter-Question'>
+        <div className="OneanswerWriter-Task-serial-number">{questionNumber}. </div>
+          <div className="OneanswerWriter-Question">
+            {question}
           </div>
           </label>
 
 
-      <div className="options">
+      <div className="OneanswerWriter-Options">
 
-          <div className="option-row">
-            <div className='answerwriter'>
+          <div className="OneanswerWriter-Answers">
+            <div className='Div-OneanswerWriter-Answers'>
               {answers[0].text}
-            </div>
-            <label className="option-label">
+            
+            <label className="Label-OneanswerWriter-CorrectAnswer">
               <input
+                className='Input-OneanswerWriter-CorrectAnswer'
                 type="radio"
-                className='radiowriter'
                 checked={answer === 1}
                 onChange={() => handleCorrectAnswerChange(1)}
               />
             </label>
+            </div>
           </div>
 
-          <div className="option-row">
-            <div className='answerwriter'>
+          <div className="OneanswerWriter-Answers">
+            <div className='Div-OneanswerWriter-Answers'>
               {answers[1].text}
-            </div>
-            <label className="option-label">
+            
+            <label className="Label-OneanswerWriter-CorrectAnswer">
               <input
+                className='Input-OneanswerWriter-CorrectAnswer'
                 type="radio"
-                className='radiowriter'
                 checked={answer === 2}
                 onChange={() => handleCorrectAnswerChange(2)}
               />
             </label>
+            </div>
           </div>
 
-          <div className="option-row">
-            <div className='answerwriter'>
+          <div className="OneanswerWriter-Answers">
+            <div className='Div-OneanswerWriter-Answers' >
               {answers[2].text}
-            </div>
-            <label className="option-label">
+            
+            <label className="Label-OneanswerWriter-CorrectAnswer">
               <input
+                className='Input-OneanswerWriter-CorrectAnswer'
                 type="radio"
-                className='radiowriter'
                 checked={answer === 3}
                 onChange={() => handleCorrectAnswerChange(3)}
               />
             </label>
+            </div>
           </div>
 
-          <div className="option-row">
-            <div className='answerwriter'>
+          <div className="OneanswerWriter-Answers">
+            <div className='Div-OneanswerWriter-Answers'>
               {answers[3].text}
-            </div>
-            <label className="option-label">
+        
+            <label className="Label-OneanswerWriter-CorrectAnswer">
               <input
+                className='Input-OneanswerWriter-CorrectAnswer'
                 type="radio"
-                className='radiowriter'
                 checked={answer === 4}
                 onChange={() => handleCorrectAnswerChange(4)}
               />
             </label>
+            </div>
           </div>
         </div>
       </div>

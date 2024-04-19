@@ -7,7 +7,7 @@ import axios from 'axios'
 
 
 
-function TestBoard() {
+function TestBoard({teacherid}) {
     const [selectedClass, setSelectedClass] = useState('');
     const [selectedSubject, setSelectedSubject] = useState('');
     const [quizTitle, setQuizTitle] = useState('');
@@ -212,7 +212,8 @@ function TestBoard() {
                 }
                 axios.post('http://localhost:8081/dolgozatok', {
                     tasks: tasks,
-                    taskdetails : taskdetails
+                    taskdetails : taskdetails,
+                    teacherid: teacherid
                 })
               }}>
                 Dolgozat véglegesítés

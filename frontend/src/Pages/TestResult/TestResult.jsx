@@ -8,17 +8,20 @@ import { useParams } from 'react-router-dom';
 
 const TestResult = () => {
   let {id} =useParams()
-  let {usertestid} =useParams()
+
   const [tasks,setTasks] = useState([])
   const [answers,setAnswers] = useState([])
   const [useranswers,setUseranswers] = useState([])
+  const [score,setScore] = useState(0)
+  const [maxscore,setMaxScore] = useState(0)
+  const [testname,setTestname] = useState("")
 
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const response = await axios.post('http://localhost:8081/testresulttasks', { id });
-        console.log("feladatok",response.data)
+        
         setTasks(response.data);
       } catch (error) {
         console.error(error);
@@ -26,6 +29,20 @@ const TestResult = () => {
     };
 
     fetchTasks();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchTestname = async () => {
+      try {
+        const response = await axios.post('http://localhost:8081/testresulttesname', { id });
+       
+        setTestname(response.data[0].Name);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchTestname();
   }, [id]);
 
   useEffect(() => {
@@ -44,9 +61,7 @@ const TestResult = () => {
       .catch(err => console.error(err));
   }, [tasks]);
 
-  useEffect(() => {
-    console.log("válaszok",answers)
-  },[answers])
+  
 
   useEffect(() => {
     let promises = tasks.map(task => {
@@ -65,9 +80,16 @@ const TestResult = () => {
   }, [tasks]);
 
 
-  useEffect(() => {
-    console.log("diakválaszok",useranswers)
-  },[useranswers])
+  
+
+  const handleScore =(addscore,addmaxscore) => {
+    let newscore = score
+    let newmaxscore = maxscore
+    newscore += addscore
+    newmaxscore += addmaxscore
+    setScore(newscore)
+    setMaxScore(newmaxscore)
+  }
 
 
   return (
@@ -75,17 +97,19 @@ const TestResult = () => {
     <div className='wholepage'>
       
       <Navbar />
-      
-      {tasks.length>0 && answers.length>0 && tasks.map((task, index) => {
+      <div>Dolgozat neve: {testname}</div>
+      <div>Pontszám: {score}/{maxscore} </div>
+
+      {tasks.length>0 && answers.length>0 && useranswers.length>0 && tasks.map((task, index) => {
                     
         if (task.type_id === 1) {
-            return <TrueFalseResult key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]}  taskid={task.id}/>;
+            return <TrueFalseResult key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]} useranswers={useranswers[index]} handleScore={handleScore} />;
         }
         else if (task.type_id === 3) {
-            return <OneAnswerResult key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]}   taskid={task.id}/>;
+            return <OneAnswerResult key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]} useranswers={useranswers[index]}  handleScore={handleScore}/>;
         }
         else if (task.type_id === 2) {
-            return <MultipleAnswersResult key={task.id} questionNumber={index+1} question={task.text} answers={answers[index]} taskid={task.id} /> ;
+            return <MultipleAnswersResult key={task.id} questionNumber={index+1} question={task.text} answers={answers[index]} useranswers={useranswers[index]}  handleScore={handleScore}/> ;
         } else {
             return "null"; 
         }

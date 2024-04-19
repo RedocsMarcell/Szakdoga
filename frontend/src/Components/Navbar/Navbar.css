@@ -50,6 +50,7 @@
   width: 60px; /* Ikonszélesség */
   height: 60px; /* Ikonmagasság */
   border-radius: 50%; /* Kerekített szegély */
+  cursor: pointer;
 }
 
 .navbar-profile {

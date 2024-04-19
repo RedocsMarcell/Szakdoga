@@ -45,10 +45,11 @@ const MultipleAnswers = ({questionNumber, onResponse,removeTask}) => {
     };
 
   return (
-    <div className="multiple-choice-container">
-      <label>
-      <div className="Task-serial-number">{questionNumber} . </div>
+    <div className="Multiple-Container">
+      <label className='Label-Multiple-Question'>
+      <div className="Multiple-Task-Serial-Number">{questionNumber} . </div>
         <input type="text"
+          className='Input-Multiple-Question'
            value={question}
            onChange={handleQuestionChange}
            placeholder={`Ide irja be a kérdést`}
@@ -56,29 +57,37 @@ const MultipleAnswers = ({questionNumber, onResponse,removeTask}) => {
         
       </label>
       <br />
+      
       {answers.map((answer, index) => (
-        <div key={index} className="answer-container">
-          <label>
+        <div key={index} className="Multiple-Answer-Container">
+
+          <label className='Label-MultipleAnswer'>
             
             <input
-              className='Answer'
+              className='Input-Multiple-Answer'
               type="text"
               value={answer}
               onChange={(e) => handleAnswerChange(index, e)}
               placeholder={`Válasz`}
             /> 
 
+          
+          <input className='Input-Multiple-CorrectAnswer' type="checkbox" onChange={() => handleCorrectAnswerChange(index)}/>
+          <button className="Remove-Answer-Button" onClick={() => removeAnswerInput(index)}> X </button>
           </label>
-          <input type="checkbox" onChange={() => handleCorrectAnswerChange(index)}/>
-          <button className="remove-answer-button" onClick={() => removeAnswerInput(index)}>X</button>
+          <br />
+          
         </div>
-      ))}
+
+))}
+      
       <br />
-      <button onClick={addAnswerInput}> Válasz hozzáadás </button>
-      <br />
-      <button className="save-button2" onClick={() => handleSave(question,answers,questionNumber,correctanswers)} >Save</button>
+      <div className='Button-Add-Answer-Container'>
+      <button className='Button-Add-Answer' onClick={addAnswerInput}> Válasz hozzáadás </button>
+      </div>
+      <button className="Button-Save" onClick={() => handleSave(question,answers,questionNumber,correctanswers)} >Save</button>
       <br/>
-      <button onClick={handleRemove} className="remove-question-button-multiple">X</button>
+      <button onClick={handleRemove} className="Remove-Question-Button-Multiple"> X </button>
         
     </div>
   )

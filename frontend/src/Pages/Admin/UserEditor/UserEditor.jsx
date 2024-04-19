@@ -1,45 +1,55 @@
-import React, { useState } from 'react';
+import React,{useState, useEffect} from 'react'
+import axios from "axios"
 
-const ClassEditor = () => {
-  const [classes, setClasses] = useState([]);
-  const [newClassName, setNewClassName] = useState('');
+const UserEditor = () => {
+  const [users,setUsers] = useState([])
 
-  const handleAddClass = () => {
-    if (newClassName.trim() !== '') {
-      setClasses([...classes, newClassName]);
-      setNewClassName('');
-    }
-  };
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.post('http://localhost:8081/adminusers', {  });
+        console.log(response.data)
+        setUsers(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  const handleDeleteClass = (index) => {
-    const updatedClasses = [...classes];
-    updatedClasses.splice(index, 1);
-    setClasses(updatedClasses);
-  };
+    fetchUsers();
+  }, []);
+
+
 
   return (
-    <div className="class-editor">
-      <h2>Class Editor</h2>
-      <div className="class-list">
-        {classes.map((className, index) => (
-          <div key={index} className="class-item">
-            <span>{className}</span>
-            <button onClick={() => handleDeleteClass(index)}>Delete</button>
-          </div>
-        ))}
-      </div>
-      <div className="add-class">
-        <input
-          type="text"
-          placeholder="Enter class name"
-          value={newClassName}
-          onChange={(e) => setNewClassName(e.target.value)}
-        />
-        <button onClick={handleAddClass}>Add Class</button>
-      </div>
-      
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Class_ID</th>
+            <th>Enable</th>
+            <th>Email</th>
+            <th>Role ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(user => (
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.Username}</td>
+              <td>{user.Password}</td>
+              <td>{user.class_Id}</td>
+              <td>{user.Enable}</td>
+              <td>{user.Email}</td>
+              <td>{user.Role_Id}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default ClassEditor;
+export default UserEditor;

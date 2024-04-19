@@ -1,79 +1,40 @@
-.multiple-choice-container {
-  margin-top: 20px; /* Tetejétől való távolság */
-  display: flex; /* Flexbox elrendezés */
-  flex-direction: column; /* Fő tengely iránya */
-  align-items: center; /* Tartalom vízszintes középre igazítása */
-  justify-content: space-between; /* Tartalom függőleges középre igazítása */
-  border: 5px solid #ccc; /* 2px vastag szegély a tartalom körül */
-  border-radius: 20px; /* Sarkok lekerekítése */
-  padding: 20px; /* Belső tér a tartalom és a szegély között */
-  position: relative; /* Relatív pozícionálás */
-  width: 100%; /* Teljes szélesség elfoglalása */
+.MultipleWriter-Container {
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 
-.answer-container {
-  display: flex; /* Flexbox elrendezés */
-  align-items: center; /* Tartalom vízszintes középre igazítása */
-  margin-bottom: 10px; /* Alsó margó */
-  border: 2px solid #ccc; /* 2px vastag szegély a tartalom körül */
-  border-radius: 50px; /* Sarkok lekerekítése */
-  padding: 15px; /* Belső tér a tartalom és a szegély között */
-  width: 100%; /* Teljes szélesség elfoglalása */
+.Label-MultipleWriter-Question {
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: inline-block;
 }
 
-.answerwriter {
-  flex-grow: 1; /* Rugalmas növekedés az elrendezésben */
-  width:0; /* Fix szélesség */
-  overflow-wrap: break-word; /* Túlcsordulás megengedése szóközök mentén */
-  display: flex;
-}
-
-.options input[type="radio"] {
-  margin-right: 10px; /* Jobb margó */
-  width: 20px; /* Szélesség */
-  height: 20px; /* Magasság */
-  border: 2px solid #ccc; /* 2px vastag szegély */
-  border-radius: 50%; /* Kör alakú kerekítés */
-}
-
-.options label {
-  margin-left: 5px; /* Bal margó */
-  cursor: pointer; /* Mutató a kurzor felett */
-}
-
-.option-row div {
-  flex-grow: 1; /* Rugalmas növekedés az elrendezésben */
-}
-
-.radiobutton {
-  transform: scale(1.5); /* Méretezés */
-  margin-top: 5px;
+.MultipleWriter-Task-serial-number {
+  display: inline-block;
   margin-right: 5px;
 }
 
-.questiondiv {
-  display: flex; /* Flexbox elrendezés */
-  align-items: center; /* Tartalom vízszintes középre igazítása */
-  border: 5px solid #ccc; /* 5px vastag szegély a tartalom körül */
-  border-radius: 20px; /* Sarkok lekerekítése */
-  padding: 50px; /* Belső tér a tartalom és a szegély között */
-  width: 100%; /* Szélesség */
-  justify-content: center; /* Tartalom vízszintes középre igazítása */
-  margin: auto; /* Automatikus margó */
-  font-weight: bold; /* Félkövér betűtípus */
+.MultipleWriter-Question {
+  display: inline-block;
 }
 
-.Task-serial-number {
-  position: absolute; /* Abszolút pozícionálás */
-  top: 10px; /* Felső távolság */
-  left: 10px; /* Bal távolság */
-  border: 1px solid black; /* 1px vastag szegély */
-  border-radius: 50%; /* Kör alakú kerekítés */
-  padding: 10px; /* Belső tér a tartalom és a szegély között */
-  background-color: lightblue; /* Háttérszín */
-  font-size: 15px; /* Betűméret */
+.MultipleWriter-Answer-Container {
+  margin-top: 10px;
 }
 
-.radiowriter {
-  margin-top: 10px; /* Felső margó */
+.Label-MultipleWriter-Answer {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  display: block;
+}
+
+.Input-MultipleWriter-Answer {
+  margin-left: 5px;
 }

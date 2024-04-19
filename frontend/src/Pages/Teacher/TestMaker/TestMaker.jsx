@@ -5,6 +5,7 @@ import Footer from '../../../Components/Footer/Footer';
 
 const TestMaker = () => {
   const [userid,setUserid] = useState(-1)//
+  const [teacherid,setTeacherid] = useState(-1)
 
   useEffect(() => {
     // Fetch token from local storage or session storage
@@ -14,6 +15,7 @@ const TestMaker = () => {
         const tokenParts = storedToken.split('.');
         const payload = JSON.parse(atob(tokenParts[1]));
         
+        setTeacherid(payload.id)
         setUserid(payload.roleid)
       } catch (error) {
         console.error('Error decoding token:', error);
@@ -29,7 +31,7 @@ const TestMaker = () => {
       
       <Navbar />
       
-     <TestBoard/>
+     <TestBoard teacherid ={teacherid} />
      
     
 

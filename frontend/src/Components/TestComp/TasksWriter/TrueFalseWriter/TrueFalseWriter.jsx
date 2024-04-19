@@ -33,12 +33,12 @@ const TrueFalse = ({questionNumber,question, onResponse,answers,taskid}) => {
 
   return (
     
-      <div className="true-false-container">
-        <label className="question">
+      <div className="TrueFalseWriter-Container">
+        <label className="Label-TrueFalseWriter-Question">
           <div><div className= "Task-serial-number">  {questionNumber} . </div>
           {question}</div>
         </label>
-        <div className="answer-buttons">
+        <div className="TrueFalseWriter-Answer-Buttons">
           <button onClick={handleTrue} className={`${answer ? 'selected' : ''}`}>Igaz</button>
           <button onClick={handleFalse} className={`${answer === false ? 'selected' : ''}`}>Hamis</button>
         </div>

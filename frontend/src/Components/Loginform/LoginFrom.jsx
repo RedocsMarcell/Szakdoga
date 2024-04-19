@@ -22,7 +22,7 @@ const LoginForm = () => {
           setUserid(payload);
           console.log(payload);
 
-          window.location.href = payload.roleid===3 ? 'http://localhost:3000/HomeStudent': 'http://localhost:3000/HomeTeacher'
+          window.location.href = payload.roleid===3 ? 'http://localhost:3000/HomeStudent': (payload.roleid===2 ?'http://localhost:3000/HomeTeacher' :"http://localhost:3000/HomeAdmin" )
 
         } catch (error) {
           console.error('Error decoding token:', error);

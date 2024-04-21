@@ -5,7 +5,7 @@ import LoginForm from './Components/Loginform/LoginFrom';
 import ClassEditor from './Pages/Admin/ClassEditor/ClassEditor';
 import UserEditor from './Pages/Admin/UserEditor/UserEditor';
 import HomeAdmin from './Pages/Admin/HomeAdmin/HomeAdmin';
-import PasswordChange from './Pages/PasswordChange/PasswordChange';
+
 import HomeStudent from './Pages/Student/HomeStudent/HomeStudent';
 import MyTestsStudent from './Pages/Student/MyTestsStudent/MyTestsStudent';
 import TestWriter from './Pages/Student/TestWriter/TestWriter';
@@ -15,6 +15,7 @@ import TestMaker from './Pages/Teacher/TestMaker/TestMaker';
 import TestResult from './Pages/TestResult/TestResult';
 import MyProfilTeacher from './Pages/Teacher/MyProfilTeacher/MyProfilTeacher';
 import UncompletedTest from './Pages/Student/UncompletedTest/UncompletedTest';
+import MyProfil from './Pages/MyProfil/MyProfil';
 
 
 
@@ -29,11 +30,10 @@ function App() {
     
        
        <Route path='/' element={<LoginForm />}></Route>
-       <Route path='/login' element={<LoginForm />}></Route>
        <Route path='/ClassEditor' element={<ClassEditor />}></Route>
        <Route path='/UserEditor' element={<UserEditor />}></Route>
        <Route path='/HomeAdmin' element={<HomeAdmin />}></Route>
-       <Route path='/PasswordChange' element={<PasswordChange />}></Route>
+       
        <Route path='/HomeStudent' element={<HomeStudent />}></Route>
        <Route path='/MyTestsStudent' element={<MyTestsStudent />}></Route>
        <Route path='/TestWriter/:id/:usertestid' element={<TestWriter />}></Route>
@@ -43,6 +43,7 @@ function App() {
        <Route path='/TestResult/:id/:usertestid' element={<TestResult />}></Route>
        <Route path='/MyProfilTeacher' element={<MyProfilTeacher />}></Route>
        <Route path='/UncompletedTest' element={<UncompletedTest />}></Route>
+       <Route path='/MyProfil' element={<MyProfil />}></Route>
        
 
       </Routes>

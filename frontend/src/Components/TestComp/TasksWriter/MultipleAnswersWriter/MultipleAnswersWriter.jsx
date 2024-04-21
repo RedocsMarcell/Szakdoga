@@ -35,19 +35,21 @@ const MultipleAnswersWriter = ({ questionNumber, question, answers, onResponse,t
 
     return (
         <div className="MultipleWriter-Container">
+            <div className= "MultipleWriter-Task-serial-number">  {questionNumber} . </div>
             <label className='Label-MultipleWriter-Question'>
-                <div className= "MultipleWriter-Task-serial-number">  {questionNumber} . </div>
+            
                 <div className='MultipleWriter-Question'> {question} </div>   
+                
             </label>
             <br />
             {answers.map((answer, index) => (
                 <div key={index} className="MultipleWriter-Answer-Container">
                     <label className='Label-MultipleWriter-Answer '>
                        
-                        <div>
+                        <div className='MultipleWriter-Answer '>
                             {answer.text}
                         <input
-                        className='Input-MultipleWriter-Answer'
+                        className='Input-MultipleWriter-CorrectAnswer'
                         type="checkbox"
                         onChange = {() =>handleChange(answer.id)}
                         readOnly

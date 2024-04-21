@@ -5,6 +5,7 @@ import OneAnswerResult from '../../Components/TestComp/TasksResult/OneanswerResu
 import MultipleAnswersResult from '../../Components/TestComp/TasksResult/MultipleAnswersResult/MultipleAnswersResult';
 import axios from "axios";
 import { useParams } from 'react-router-dom';
+import './TestResult.css'
 
 const TestResult = () => {
   let {id} =useParams()
@@ -15,6 +16,7 @@ const TestResult = () => {
   const [score,setScore] = useState(0)
   const [maxscore,setMaxScore] = useState(0)
   const [testname,setTestname] = useState("")
+  const [types,SetTypes] = useState([])
 
 
   useEffect(() => {
@@ -82,14 +84,38 @@ const TestResult = () => {
 
   
 
-  const handleScore =(addscore,addmaxscore) => {
-    let newscore = score
-    let newmaxscore = maxscore
-    newscore += addscore
-    newmaxscore += addmaxscore
-    setScore(newscore)
+  const handleScore = (addscore, addmaxscore,type) => {
+    console.log("types",types)
+    if(!types.includes(type))
+    {
+       // Update the score by adding the new score
+       // Update the max score by adding the new max score
+      SetTypes(prevTypes => [...prevTypes, type]); 
+    }
+    setScore(score => score + addscore);
+    
+  };
+
+  useEffect(()=> {
+    let newmaxscore =0
+    if(answers.length>0)
+    {
+      for (let i=0;i<answers.length;i++)
+      {
+        for (let j=0;j<answers[i].length;j++)
+        {
+          if(answers[i][j].Correct == 1)
+          {
+            newmaxscore = newmaxscore +1
+          }
+          
+        }
+      }
+    }
     setMaxScore(newmaxscore)
-  }
+    console.log("asnwersssssss",answers)
+  },[answers])
+ 
 
 
   return (
@@ -97,23 +123,30 @@ const TestResult = () => {
     <div className='wholepage'>
       
       <Navbar />
-      <div>Dolgozat neve: {testname}</div>
-      <div>Pontszám: {score}/{maxscore} </div>
-
-      {tasks.length>0 && answers.length>0 && useranswers.length>0 && tasks.map((task, index) => {
-                    
-        if (task.type_id === 1) {
-            return <TrueFalseResult key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]} useranswers={useranswers[index]} handleScore={handleScore} />;
-        }
-        else if (task.type_id === 3) {
-            return <OneAnswerResult key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]} useranswers={useranswers[index]}  handleScore={handleScore}/>;
-        }
-        else if (task.type_id === 2) {
-            return <MultipleAnswersResult key={task.id} questionNumber={index+1} question={task.text} answers={answers[index]} useranswers={useranswers[index]}  handleScore={handleScore}/> ;
-        } else {
-            return "null"; 
-        }
-      })}
+      <div className='TestResult-fullpage'>
+        <div className='TestResult-Container'>
+        <div className='TestResult-Task-Name'>Dolgozat neve: {testname}</div>
+        <div className='TestResult-Score'>Pontszám: {score}/{maxscore} </div>
+        </div>
+        
+        <div className='TestResult-Tasks'>
+        {tasks.length>0 && answers.length>0 && useranswers.length>0 && tasks.map((task, index) => {
+                      
+          if (task.type_id === 1) {
+              return <TrueFalseResult key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]} useranswers={useranswers[index]} handleScore={handleScore} />;
+          }
+          else if (task.type_id === 3) {
+              return <OneAnswerResult key={task.id} questionNumber={index + 1} question={task.text} answers={answers[index]} useranswers={useranswers[index]}  handleScore={handleScore}/>;
+          }
+          else if (task.type_id === 2) {
+              return <MultipleAnswersResult key={task.id} questionNumber={index+1} question={task.text} answers={answers[index]} useranswers={useranswers[index]}  handleScore={handleScore}/> ;
+          } else {
+              return "null"; 
+          }
+        })}
+        </div>
+      </div>
+      
       
     </div>
      

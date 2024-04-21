@@ -28,7 +28,7 @@
     border-radius: 5px; /* Kerekített szegély */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Árnyék */
     z-index: 1; /* A más tartalmak fölé kerül */
-    padding: 10 px;
+    padding: 15px;
   }
   
   .profile-menu ul {
@@ -57,3 +57,8 @@
   position: relative; /* Relatív pozícionálás a lenyíló menühöz */
 }
 
+.navbar-username{
+  color: white;
+  position: absolute;
+  right: 150px;
+}

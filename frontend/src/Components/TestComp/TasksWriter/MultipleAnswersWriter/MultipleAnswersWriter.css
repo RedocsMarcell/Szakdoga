@@ -2,39 +2,66 @@
   font-family: Arial, sans-serif;
   border: 1px solid #ccc;
   padding: 20px;
+  padding: 30px;
   margin-bottom: 20px;
   border-radius: 5px;
 }
 
-.Label-MultipleWriter-Question {
-  font-weight: bold;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  display: inline-block;
-}
+
 
 .MultipleWriter-Task-serial-number {
   display: inline-block;
-  margin-right: 5px;
+  
+    top: 10px;
+    left: 10px ;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: lightblue;
+    font-size: 15px;
+ 
 }
 
 .MultipleWriter-Question {
-  display: inline-block;
+  border: 2px solid darkgray; /* increase border thickness */
+  border-radius: 50px; /* increase border radius */
+  font-weight: bold; /* make text bold */
+  width: 80%; /* reduce the width of the div */
+  margin: 20px auto; /* center-align the div and add some space around it */
+  padding: 20px; /* add padding inside the div */
+  background-color: #f0f0f0; /* add a light gray background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* add a subtle shadow */
+  text-align: justify; /* justify the text */
+  word-wrap: break-word; /* allow long words to break and wrap */
 }
 
 .MultipleWriter-Answer-Container {
-  margin-top: 10px;
+  margin-top: 20px;
+  position: relative;
+  
 }
 
 .Label-MultipleWriter-Answer {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 20px;
+  margin-bottom: 10px;
+  border: 1px solid darkgray;
+  border-radius: 5cm;
   display: block;
 }
 
 .Input-MultipleWriter-Answer {
   margin-left: 5px;
+}
+
+.Input-MultipleWriter-CorrectAnswer{
+  position: absolute;
+  right :10px;
+  transform: scale(2);
+  border: 1px solid #ccc;
+  margin-right: 15px; 
+  top:40%;
+}
+.MultipleWriter-Answer{
+  margin-right: 40px;
+  word-wrap: break-word;
 }

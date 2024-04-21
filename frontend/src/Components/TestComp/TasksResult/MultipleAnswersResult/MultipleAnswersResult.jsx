@@ -1,14 +1,20 @@
 import React,{useState, useEffect} from 'react';
 import './MultipleAnswersResult.css';
+import { FcCheckmark } from "react-icons/fc";
+import { FcCancel } from "react-icons/fc";
 
 const MultipleAnswersResult = ({ questionNumber, question, answers, useranswers ,handleScore }) => {
     const [chosenanswer,setChosenanswer] = useState([])
     const [score,setScore] = useState(0)
+    const [maxscore, setMaxScore] = useState(0)
 
     useEffect (() => {
         const handleCorrect = () => {
             const newChosenAnswer = [];
-            setScore(0)
+            let newscore = 0
+            console.log("userans",useranswers)
+            console.log("ans", answers)
+
             for (let i =0;i<useranswers.length;i++)
             {
                 
@@ -18,10 +24,11 @@ const MultipleAnswersResult = ({ questionNumber, question, answers, useranswers 
                     for (let j = 0; j < answers.length; j++) {
                         if (answers[j].id === useranswerid) {
                             newChosenAnswer.push(j)
-                            if(answers[i].Correct === 1)
+                            if(answers[j].Correct === 1)
                             {
-                                let newscore = score
-                                newscore += 1
+                                
+                               
+                                newscore = newscore+ 1
                                 setScore(newscore)
                             }
                          
@@ -30,6 +37,16 @@ const MultipleAnswersResult = ({ questionNumber, question, answers, useranswers 
                 }
                 
             }
+            let newmaxscore = 0
+            for (let i=0; i<answers.length;i++)
+            {
+                if(answers[i].Correct ===1)
+                {
+                    newmaxscore = newmaxscore +1
+
+                }
+            }
+            setMaxScore(newmaxscore)
             setChosenanswer(newChosenAnswer)
           
           
@@ -41,27 +58,29 @@ const MultipleAnswersResult = ({ questionNumber, question, answers, useranswers 
         
       },[useranswers])
       useEffect (() => {
-        handleScore(score,useranswers.length)
+        handleScore(score,maxscore,"multi")
+        console.log("multi",maxscore)
       },[score])
 
       
 
     return (
-        <div className="multiple-choice-container">
-            <label>
-                <div className= "Task-serial-number">  {questionNumber} . </div>
-                <div> {question} </div>  
-                <div>Score: {score}/{useranswers.length} </div> 
+        <div className="Multiple-MultipleAnswersResult-Container">
+                          <div className= "MultipleAnswersResult-Task-Serial-Number">  {questionNumber} . </div>
+                          <div className='MultipleAnswersResult-Score'>Score: {score}/{useranswers.length} </div> 
+            <label className='Label-MultipleAnswersResult'>
+                <div className='MultipleAnswersResult-Question'> {question} </div>  
             </label>
+            
             <br />
             {answers.map((answer, index) => (
-                <div key={index} className="answer-container">
-                    <label>
-                        Answer {index + 1}:
-                        <div>
+                <div key={index} className="MultipleAnswersResult-Answer-Container">
+                    <label className='Label-MultipleAnswersResult-Answer'>
+                    <input className='Input-MultipleAnswersResult' type="radio" disabled checked = {chosenanswer.includes(index) ? "checked" : ""}/>
+                        <div className='MultipleAnswersResult-Correct'>{ chosenanswer.includes(index) ?(answers[index].Correct === 1 ? <FcCheckmark /> :<FcCancel />) :(answers[index].Correct === 1 ? <FcCheckmark /> :"")}</div>
+                        <div className='MultipleAnswersResult-Answer'>
                             {answer.text}
-                        <input type="radio" disabled checked = {chosenanswer.includes(index) ? "checked" : ""}/>
-                        <div>{ chosenanswer.includes(index) ?(answers[index].Correct === 1 ? "Y" :"X") :(answers[index].Correct === 1 ? "Y" :"Nincs mit mutatni")}</div>
+                        
                         </div>
                     </label>
                     

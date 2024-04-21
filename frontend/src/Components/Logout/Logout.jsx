@@ -1,4 +1,6 @@
 import React from 'react'
+import './Logout.css'
+
 
 const handleLogout = () => {
   localStorage.removeItem("token")
@@ -8,9 +10,9 @@ const handleLogout = () => {
 
 function Logout() {
   return (
-    <div className='Logout' onClick={handleLogout}> 
-      Kijelentkezés
-    </div>
+    <div className='Logout redText' onClick={handleLogout}> 
+  Kijelentkezés
+</div>
   )
 }
 

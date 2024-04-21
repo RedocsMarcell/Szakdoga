@@ -37,7 +37,8 @@ const TrueFalseResult = ({questionNumber,question,answers,useranswers,handleScor
  
   
   useEffect (() => {
-    handleScore(score,1)
+    handleScore(score,1,"true")
+    console.log("true")
   },[score])
 
   
@@ -45,18 +46,22 @@ const TrueFalseResult = ({questionNumber,question,answers,useranswers,handleScor
 
   return (
     
-      <div className="true-false-container">
-        <label className="question">
-          <div><div className= "Task-serial-number">  {questionNumber} . </div>
-          {question}</div>
-          <div>Score: {score}/1</div>
+      <div className="TrueFalseResult-Container">
+        <label className="Label-TrueFalseResult">
+        <div className= "TrueFalseResult-Task-Serial-Number">  {questionNumber} . </div>
+          <div className='TrueFalseResult-Question'>
+          {question}
+          </div>
+          <div className='TrueFalseResult-Score'>Score: {score}/1</div>
         </label>
+         <div className='TrueFalseResult-CorrectAnswer'>
           {truechosen !==null && 
+          
           <div  className={truechosen === true? (correctanswertrue ? 'correct' : 'incorrect') : (correctanswertrue ? 'correct' : "")}>Igaz</div>
           }
           <br></br>
           <div  className={ truechosen ===false ? (correctanswertrue ? 'incorrect' : 'correct') : (correctanswertrue ? '' : 'correct')}>Hamis</div>
-        
+          </div>
 
         <br/>
         

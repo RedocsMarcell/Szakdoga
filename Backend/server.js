@@ -52,6 +52,7 @@ app.post('/users', (req, res) => {
                         const roleid = data[0].Role_Id;
                         
                         const token = jwt.sign({id,roleid}, "jwt-secret-key", {expiresIn: 84600});
+                        
                         res.cookie('token', token, { httpOnly: true });
                         return res.json({ token });
                 } else {
@@ -96,7 +97,7 @@ app.post('/dolgozatok', (req, res) =>{
        }
        
        const classid =data[0].Id
-       sql = `SELECT * FROM users WHERE class_id = ?`
+       sql = `SELECT * FROM users WHERE class_Id = ?`
        db.query(sql, [classid], (err, usersdata) => {
         if (err) {
             console.error(err);
@@ -218,7 +219,10 @@ app.post('/receiveuncompletedtests', (req, res) => {
 app.post('/receiveuncompletedtestsoriginal', (req, res) => {
     const sql = 'SELECT * FROM tests WHERE id = ? ';
     db.query(sql, [req.body.testid], (err, data) => {
-        
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
         return res.json(data)
 
     
@@ -235,6 +239,20 @@ app.post('/receivetestswriting', (req, res) => {
     
     })
 })
+
+app.post('/receivetestwritinginformation', (req, res) => {
+    const sql = 'SELECT * FROM tests WHERE id = ?';
+    db.query(sql, [req.body.id], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
+        return res.json(data)
+
+    
+    })
+})
+
 
 
 app.post('/receivetestanswerswriting', (req, res) => {
@@ -448,9 +466,150 @@ app.post('/adminusers', (req, res) => {
     })
 })
 
+app.post('/adminuserdeactivation', (req, res) => {
+    const sql = ` UPDATE users SET Enable = 0  WHERE id = ?` ;
+    db.query(sql, [req.body.id], (err, data) => {
+        
+        return res.json(data)
 
+    
+    })
+})
+
+app.post('/adminuseractivation', (req, res) => {
+    const sql = ` UPDATE users SET Enable = 1  WHERE id = ?` ;
+    db.query(sql, [req.body.id], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
+
+app.post('/newuser', (req, res) => {
+    const plainTextPassword = req.body.password;
+    let hashedpassword ="";
+    bcrypt.hash(plainTextPassword, salt, function(err, hash) {
+        if (err) {
+            console.log("Error in hash")
+        } else {
+            
+            hashedpassword = hash
+            
+            const sql = `INSERT INTO users ( Username,Password,class_Id,Enable,Email,Role_Id ) VALUES (?,?,?,?,?,?)`;
+            db.query(sql, [req.body.username,hashedpassword,req.body.classid,req.body.enable,req.body.email,req.body.roleid], (err, data) => {
+                if (err) {
+                    console.error(err);
+                    return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+                }
+
+
+                return res.json(data)
+
+    
+    })
+        
+        }
+});
+    
+})
+
+
+app.post('/changepassword', (req, res) => {
+    const plainTextPassword = req.body.password;
+    let hashedpassword ="";
+    bcrypt.hash(plainTextPassword, salt, function(err, hash) {
+        if (err) {
+            console.log("Error in hash")
+        } else {
+            
+            hashedpassword = hash
+            
+            const sql = ` UPDATE users SET Password = ?  WHERE id = ?` ;
+            db.query(sql, [hashedpassword,req.body.userid], (err, data) => {
+                if (err) {
+                    console.error(err);
+                    return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+                }
+
+
+                return res.json(data)
+
+    
+    })
+        
+        }
+});
+    
+})
+
+app.post('/changeclass', (req, res) => {
+    const sql = ` UPDATE users SET class_Id = ?  WHERE id = ?` ;
+    db.query(sql, [req.body.class,req.body.userid], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
+        return res.json(data)
+        
+    
+    })
+})
+
+app.post('/changeemail', (req, res) => {
+    const sql = ` UPDATE users SET Email = ?  WHERE id = ?` ;
+    db.query(sql, [req.body.email,req.body.userid], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json({ Error: 'Hiba a válaszok beszúrásakor' });
+        }
+        return res.json(data)
+
+    
+    })
+})
   
 
+app.post('/receiveusername', (req, res) => {
+    const sql = 'SELECT Username FROM users WHERE id=?';
+    db.query(sql, [req.body.realuserid], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
+
+app.post('/profiledetails', (req, res) => {
+    const sql = 'SELECT Username,class_Id,Email,Role_Id FROM users WHERE id=?';
+    db.query(sql, [req.body.id], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
+
+
+app.post('/profileclass', (req, res) => {
+    const sql = 'SELECT ClassName FROM class WHERE id=?';
+    db.query(sql, [req.body.classid], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
+
+app.post('/profilerole', (req, res) => {
+    const sql = 'SELECT Name FROM role WHERE id=?';
+    db.query(sql, [req.body.roleid], (err, data) => {
+        
+        return res.json(data)
+
+    
+    })
+})
 
 app.listen(8081, () => {
     console.log("Listening...");

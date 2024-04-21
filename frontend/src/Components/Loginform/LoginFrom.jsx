@@ -5,8 +5,9 @@ import axios from 'axios';
 
 const LoginForm = () => {
   const [userid, setUserid] = useState(-1);
-  const [username, setText] = useState('');
+  const [username, setText] = useState('');                                                       
   const [password, setPassword] = useState('');
+  const [errormessage,setErrormessage] = useState('')
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -14,6 +15,8 @@ const LoginForm = () => {
     console.log(username, password);
     axios.post('http://localhost:8081/users', { username, password })
       .then(res => {
+        console.log(res)
+        setErrormessage(res.data.Error)
         localStorage.setItem('token', res.data.token);
         try {
           const tokenParts = res.data.token.split('.');
@@ -46,6 +49,7 @@ const LoginForm = () => {
             <input type="password" placeholder='Jelszó' required onChange={e => setPassword(e.target.value)} />
             
           </div>
+          <div>{errormessage}</div>
 
           
 

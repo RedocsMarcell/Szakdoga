@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
+import './MyProfil.css'
+import Navbar from '../../Components/Navbar/Navbar';
+import Footer from '../../Components/Footer/Footer';
 import axios from "axios"
 
-const MyProfilTeacher = () => {
+
+const MyProfil = () => {
     const [profileData, setProfileData] = useState({});
     const [loading, setLoading] = useState(true);
     const[id,setId] =useState(-1)
@@ -27,19 +30,28 @@ const MyProfilTeacher = () => {
     useEffect(() => {
         const fetchUser = async () => {
           try {
-            const response = await axios.post('http://localhost:8081/classes', { id });
+            const response = await axios.post('http://localhost:8081/profiledetails', { id });
+            console.log(id)
             console.log(response.data)
+            if(response.data.length>0)
+            {
+                let classid = response.data[0].class_Id
+                const response2 = await axios.post('http://localhost:8081/profileclass', { classid });
+                let roleid = response.data[0].Role_Id
+                const response3 = await axios.post('http://localhost:8081/profilerole', { roleid });
+                
+                const Data = {
             
-            const Data = {
+                    username: response.data[0].Username,
+                    classId: response2.data[0].ClassName,
+                    email: response.data[0].Email,
+                    roleId: response3.data[0].Name
+                };
+        
+                setProfileData(Data);
+                setLoading(false);
+            }
             
-                username: 'diák',
-                classId: 3,
-                email: 'diak@gmail.com',
-                roleId: 3
-            };
-    
-            setProfileData(Data);
-            setLoading(false);
           } catch (error) {
             console.error(error);
           }
@@ -51,7 +63,11 @@ const MyProfilTeacher = () => {
     
 
     return (
+        <div className='wholepage'>
+        <Navbar/>
+        <Footer/>
         <div className="profile-container">
+          
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -67,7 +83,8 @@ const MyProfilTeacher = () => {
                 </>
             )}
         </div>
+        </div>
     );
 };
 
-export default MyProfilTeacher;
+export default MyProfil;

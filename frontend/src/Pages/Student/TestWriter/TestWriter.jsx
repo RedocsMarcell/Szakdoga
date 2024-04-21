@@ -33,7 +33,7 @@ const TestWriter = () => {
       <Navbar />
       
       
-      <TestBoardWriter />
+      <TestBoardWriter  />
      
       
     </div>

@@ -1,55 +1,57 @@
-import React, { useEffect } from 'react'
-import './Timer.css'
+import React, { useEffect, useState } from 'react';
+import './Timer.css';
 
+const Timer = ({ minutes_base, seconds_base, handleTimer }) => {
+  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(60);
+  let timer;
 
+  useEffect(() => {
+    console.log("perc",minutes)
+    handleTimer(minutes);
+  }, [minutes]);
 
-const Timer = ({time}) => {
+  useEffect(() => {
+    timer = setInterval(() => {
+      if (seconds === 0 && minutes === 0) {
+        clearInterval(timer);
+        return;
+      }
 
-const [seconds,SetSeconds]=useState(0);
-const [minutes,setMinutes]=useState(0);
+      if (seconds === 0) {
+        setMinutes((prevMinutes) => prevMinutes - 1);
+        setSeconds(59);
+      } else {
+        setSeconds((prevSeconds) => prevSeconds - 1);
+      }
+    }, 1000);
 
-var timer;
-useEffect(()=>{
+    return () => clearInterval(timer);
+  }, [seconds, minutes]);
 
-timer= setInterval(()=>{
-    SetSeconds(seconds-1);
-
-    if(seconds===0){
-        setMinutes(minutes-1);
-        setSeconds(60);
+  useEffect(() => {
+    if (minutes_base>0) 
+    {
+      setMinutes(minutes_base);
+       setSeconds(seconds_base);
     }
-
-},1000)
-
-
-
-return ()=> clearInterval(timer);
-
-});
-
-useEffect(() => {
-    setMinutes(time)
-},[])
-
+    else
+    {
+      setMinutes(60);
+       setSeconds(0);
+    }
+    
+  }, [minutes_base, seconds_base]);
 
   return (
     <div className='timer'>
-      <div className='container'>
+      
         <div className='timer_container'>
-        <h1>Timer</h1>
-        <h1>{minutes<10? "0"-minutes :minutes}:{seconds<10? "0"-seconds: seconds}</h1>
-
+          <h1>{minutes < 10 ? '0' + minutes : minutes}:{seconds < 10 ? '0' + seconds : seconds}</h1>
         </div>
-
-
-
-      </div>
-
-
-
-
+    
     </div>
-  )
-}
+  );
+};
 
-export default Timer
+export default Timer;

@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import './Navbar.css';
 import Logout from '../Logout/Logout'
+import axios from "axios"
+import { Link  } from 'react-router-dom';
 
 
 
@@ -8,7 +10,9 @@ import Logout from '../Logout/Logout'
 function Navbar() {
   // State a lenyíló menü kezeléséhez
   const [menuOpen, setMenuOpen] = useState(false);
-  const [userid,setUserid] = useState(-1)//
+  const [userid,setUserid] = useState(-1)
+  const [realuserid,setRealuserid] = useState(-1)
+  const [username,setUsername] = useState("")
   
 
   useEffect(() => {
@@ -18,7 +22,7 @@ function Navbar() {
       try {
         const tokenParts = storedToken.split('.');
         const payload = JSON.parse(atob(tokenParts[1]));
-        
+        setRealuserid(payload.id)
         setUserid(payload.roleid)
       } catch (error) {
         console.error('Error decoding token:', error);
@@ -26,6 +30,25 @@ function Navbar() {
       
     }
   }, []);
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const response = await axios.post('http://localhost:8081/receiveusername', { realuserid });
+        
+        setUsername(response.data[0].Username);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    if (realuserid >= 0)
+  {
+    fetchUsername();
+  }
+    
+  }, [realuserid]);
+  
+
 
   const testbool= userid === 3
 
@@ -57,11 +80,15 @@ function Navbar() {
         {/* Profile picture placeholder */}
         <img src="../../profil_astronaut_icon.png" alt="navbar-icon" onClick={toggleMenu}/>  
       </div>
+      <div className='navbar-username'>
+        {username}
+      </div>
       {menuOpen && (
         <div className="profile-menu">
           <ul>
-            <li onClick={() => console.log("Jelszó módosítás")}>Jelszó módosítás</li>
-            <li onClick={() => console.log("My Profil")}>My Profil</li>
+           
+          <Link to={`/MyProfil`} ><li  onClick={() => console.log("My Profil")}>My Profil</li></Link>
+      
             <li> {<Logout />}  </li>
           </ul>
         </div>

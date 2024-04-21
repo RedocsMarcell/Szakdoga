@@ -5,6 +5,7 @@ import TrueFalseWriter from '../../../Components/TestComp/TasksWriter/TrueFalseW
 import "./TestBoardWriter.css"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Timer from '../../Timer/Timer'
 
 
 
@@ -18,6 +19,24 @@ function TestBoardWriter() {
   const [tasks,setTasks] = useState([])
   const [answers,setAnswers] = useState([])
   const [useranswers,setUseranswers] = useState([])
+  const [testname,setTesname] = useState("")
+  const [testduration,setTestduration] = useState(60)
+  const [startTime, setStartTime] = useState(null);
+  const [remainingMinutes, setRemainingMinutes] = useState(60);
+  const [remainingSeconds, setRemainingSeconds] = useState(0);
+
+
+  useEffect(() => {
+    const elapsedTimeInSeconds = Math.floor((Date.now() - startTime) / 1000); // Calculate elapsed time in seconds
+    const remainingTimeInSeconds = Math.max(testduration * 60 - elapsedTimeInSeconds, 0); // Calculate remaining time, ensuring it doesn't go negative
+    const remainingMinutes = Math.floor(remainingTimeInSeconds / 60); // Calculate remaining minutes
+    const remainingSeconds = remainingTimeInSeconds % 60; // Calculate remaining seconds
+    setRemainingMinutes(remainingMinutes);
+    setRemainingSeconds(remainingSeconds);
+    console.log(remainingMinutes)
+    console.log(remainingSeconds)
+  }, [startTime, testduration]);
+  
 
 
   useEffect(() => {
@@ -32,6 +51,22 @@ function TestBoardWriter() {
     };
 
     fetchTasks();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchTestInformation = async () => {
+      try {
+        const response = await axios.post('http://localhost:8081/receivetestwritinginformation', { id });
+        console.log("adatok",response.data)
+        setTesname(response.data[0].Name)
+        setTestduration(response.data[0].Time)
+        
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchTestInformation();
   }, [id]);
 
   useEffect(() => {
@@ -102,11 +137,37 @@ function TestBoardWriter() {
     console.log("asd",useranswers)
   },[useranswers])
 
+  const handleSave = () => {
+    console.log(useranswers)
+                
+    axios.post('http://localhost:8081/senduseranswers', {
+        answers: useranswers,
+        usertestid : usertestid
+        
+    })
+    window.location.href = 'http://localhost:3000/MyTestsStudent'
+  }
+  const handleTimer= (minutes) => {
+    if(minutes===0)
+    {
+      handleSave()
+      
+    }
+  }
+  useEffect(() => {
+    setStartTime(localStorage.getItem('starttime'));
+  }, []);
+
   
     
   
   return (
-    <div className="test-board-container">
+    <div className="TestBoardWriter-Container">
+            <div className="TestBoardWriter-Taskname-Timer">
+              <div className='TestBoardWriter-Tasksname'> Dolgozat neve:{testname}</div>
+              <div className='TestBoardWriter-Timer'>Hátralévő idő: <Timer handleTimer={handleTimer } minutes_base={remainingMinutes} seconds_base={remainingSeconds}/> </div>
+            </div>
+            
             <div className="test-board">
 
                 
@@ -127,15 +188,7 @@ function TestBoardWriter() {
               
               <div className="finish-quiz-button-container">
               <button className="finish-quiz-button" disabled={tasks.length === 0}
-              onClick={() => {
-                console.log(useranswers)
-                
-                axios.post('http://localhost:8081/senduseranswers', {
-                    answers: useranswers,
-                    usertestid : usertestid
-                    
-                })
-              }}>
+              onClick={handleSave}>
                 Dolgozat Beküldése
                 </button>
                 </div>

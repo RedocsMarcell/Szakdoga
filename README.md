@@ -1,2 +1,2 @@
 # Szakdoga
-Dolgozatjavito weblap
+Dolgozatjavito weblap masterban találhato

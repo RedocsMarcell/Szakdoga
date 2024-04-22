@@ -230,12 +230,16 @@ const handleemailchange = (e) => {
         <div> user id megadása a deaktiváláshoz: </div>
         <input type="text"  onChange={handleDeactivationInputChange}/>
         <button onClick={handleDeactivation}>Beállítás</button> 
-        
+        <br/>
+        <br/>
         <div> Fiók aktiválása: </div>
         <div> user id megadása az aktiváláshoz: </div>
         <input type="text"  onChange={handleActivationInputChange}/>
         <button onClick={handleActivation}>Beállítás</button>
-        
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <div> Új fiók létrehozása:</div>
         <div> Username: </div>
         <input type="text"  onChange={handleusernameInputChange}/>
@@ -250,21 +254,28 @@ const handleemailchange = (e) => {
         <div>Role ID:</div>
         <input type="text"  onChange={handleroleidInputChange}/>
         <button onClick={handleNewUser}>Létrehozás</button>
-
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <div> Password változtatása </div>
         <div> user id megadása a Password módosításához: </div>
         <input type="text"  onChange={handlepassworduserid}/>
         <div> Új jelszó </div>
         <input type="text"  onChange={handlepasswordchange}/>
         <button onClick={handleChangepassword}>Beállítás</button>
-
+        <br/>
+        <br/> <br/>
+        <br/>
         <div> Class_id változtatása </div>
         <div> user id megadása a Class_id módosításához: </div>
         <input type="text"  onChange={handleclassuserid}/>
         <div> Új Class_id  </div>
         <input type="text"  onChange={handleclasschange}/>
         <button onClick={handleChangeclass}>Beállítás</button> 
-
+        <br/>
+        <br/> <br/>
+        <br/>
         <div> Email változtatása </div>
         <div> user id megadása a Email módosításához: </div>
         <input type="text"  onChange={handleemailuserid}/>

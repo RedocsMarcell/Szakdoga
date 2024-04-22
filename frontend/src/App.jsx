@@ -5,7 +5,6 @@ import LoginForm from './Components/Loginform/LoginFrom';
 import ClassEditor from './Pages/Admin/ClassEditor/ClassEditor';
 import UserEditor from './Pages/Admin/UserEditor/UserEditor';
 import HomeAdmin from './Pages/Admin/HomeAdmin/HomeAdmin';
-
 import HomeStudent from './Pages/Student/HomeStudent/HomeStudent';
 import MyTestsStudent from './Pages/Student/MyTestsStudent/MyTestsStudent';
 import TestWriter from './Pages/Student/TestWriter/TestWriter';
@@ -33,7 +32,6 @@ function App() {
        <Route path='/ClassEditor' element={<ClassEditor />}></Route>
        <Route path='/UserEditor' element={<UserEditor />}></Route>
        <Route path='/HomeAdmin' element={<HomeAdmin />}></Route>
-       
        <Route path='/HomeStudent' element={<HomeStudent />}></Route>
        <Route path='/MyTestsStudent' element={<MyTestsStudent />}></Route>
        <Route path='/TestWriter/:id/:usertestid' element={<TestWriter />}></Route>

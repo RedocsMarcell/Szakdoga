@@ -58,7 +58,7 @@ function OneanswerResult({ questionNumber, question, answers,  useranswers,handl
     <div className="OneanswersResult-Container">
       <div className="OneanswersResult-Task-serial-number">{questionNumber} . </div>
       
-      <div className='OneanswersResult-Score'>Score: {score}/1</div>
+      <div className='OneanswersResult-Score'>Pont: {score}/1</div>
         <label className='Label-OneanswersResult'>
           <div className="OneanswersResult-Question">
             

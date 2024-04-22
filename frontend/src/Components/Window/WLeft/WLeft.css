@@ -8,6 +8,7 @@
     width: 67.5vh;
     height: 30vh;
     border: 2px solid black;
+    border-radius: 50px;
     margin: 20px;
     transition: width 1.0s, height 1.0s;
   }
@@ -26,4 +27,13 @@
     color: white;
     padding: 10px;
     border-radius: 5px;
+  }
+
+  .window img {
+    padding: auto;
+    padding-top: 15px;
+       width: 100%; /* Hozzáadva */
+    height: 100%; /* Hozzáadva */
+    object-fit: contain; /* Hozzáadva */
+    
   }

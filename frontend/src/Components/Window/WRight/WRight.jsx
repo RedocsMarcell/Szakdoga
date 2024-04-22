@@ -2,6 +2,7 @@ import React from 'react'
 import { useState }from 'react';
 import './WRight.css'
 
+
 const WRight = () => {
         
         
@@ -19,7 +20,7 @@ const WRight = () => {
         onMouseEnter={toggleWindowSize}
      
       >
-           <img className='img' src="path/to/your/image.jpg" alt="Description of the image" />
+           <img className='wrimg' src="../../pen.png" alt="Description of the image" />
       </div>
 
     </div>

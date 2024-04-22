@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../../Components/Navbar/Navbar';
 import './HomeTeacher.css';
-import Window from '../../../Components/Window/WRight/WRight';
+
 import { Link } from 'react-router-dom';
 import Footer from '../../../Components/Footer/Footer';
+import WRight from '../../../Components/Window/WRight/WRight';
+import WLeft from '../../../Components/Window/WLeft/WLeft';
 
 const HomeTeacher = () => {
   
@@ -36,12 +38,12 @@ const HomeTeacher = () => {
 
       <div className='DivLeft'>
         <Link to="http://localhost:3000/MyTestsTeacher">
-          <Window className='LeftWindow'/>
+          <WLeft className='LeftWindow'/>
         </Link>
       </div>
       <div className='DivRight'>
         <Link to="http://localhost:3000/TestMaker">
-          <Window className='RightWindow'/>
+          <WRight className='RightWindow'/>
         </Link>
       </div>
       <Footer/>

@@ -52,7 +52,7 @@ const TrueFalseResult = ({questionNumber,question,answers,useranswers,handleScor
           <div className='TrueFalseResult-Question'>
           {question}
           </div>
-          <div className='TrueFalseResult-Score'>Score: {score}/1</div>
+          <div className='TrueFalseResult-Score'>Pont: {score}/1</div>
         </label>
          <div className='TrueFalseResult-CorrectAnswer'>
           {truechosen !==null && 

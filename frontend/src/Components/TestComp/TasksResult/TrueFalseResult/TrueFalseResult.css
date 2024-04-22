@@ -7,16 +7,19 @@
   background-color: #f9f9f9;
 }
 
-.Label-TrueFalseResult {
-  font-weight: bold;
-  font-size: 18px;
-}
+
 
 .TrueFalseResult-Task-Serial-Number {
   display: inline-block;
-  margin-right: 10px;
-  font-size: 20px;
+  top: 5px;
+  left: 10px ;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: whitesmoke;
+  font-size: 15px;
 }
+
 
 .TrueFalseResult-Question {
   border: 2px solid darkgray; /* increase border thickness */

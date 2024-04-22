@@ -67,7 +67,7 @@ const MultipleAnswersResult = ({ questionNumber, question, answers, useranswers 
     return (
         <div className="Multiple-MultipleAnswersResult-Container">
                           <div className= "MultipleAnswersResult-Task-Serial-Number">  {questionNumber} . </div>
-                          <div className='MultipleAnswersResult-Score'>Score: {score}/{useranswers.length} </div> 
+                          <div className='MultipleAnswersResult-Score'>Pont: {score}/{useranswers.length} </div> 
             <label className='Label-MultipleAnswersResult'>
                 <div className='MultipleAnswersResult-Question'> {question} </div>  
             </label>

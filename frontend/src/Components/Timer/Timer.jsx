@@ -8,8 +8,8 @@ const Timer = ({ minutes_base, seconds_base, handleTimer }) => {
 
   useEffect(() => {
     console.log("perc",minutes)
-    handleTimer(minutes);
-  }, [minutes]);
+    handleTimer(minutes,seconds);
+  }, [minutes,seconds]);
 
   useEffect(() => {
     timer = setInterval(() => {

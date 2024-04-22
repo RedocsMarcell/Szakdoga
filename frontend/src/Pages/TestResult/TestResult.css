@@ -11,21 +11,25 @@
   border: 1px solid #ccc;
   border-radius: 5px; /* Kerekített sarkok */
   padding: 100px;
-  width: 400;
-  height: 150px;
-  top:130px;
+  width: 700px;
+  height: 70px;
+  top:120px;
   background-color: #f9f9f9; /* Háttérszín */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Árnyék */
   }
   
   .TestResult-Task-Name {
+    position: relative;
     font-size: 18px;
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
+    
+    
+    
   }
-  
   .TestResult-Score {
+    position: absolute;
     font-size: 16px;
     color: #666;
   }

@@ -147,8 +147,8 @@ function TestBoardWriter() {
     })
     window.location.href = 'http://localhost:3000/MyTestsStudent'
   }
-  const handleTimer= (minutes) => {
-    if(minutes===0)
+  const handleTimer= (minutes,seconds) => {
+    if(minutes===0 && seconds ===0)
     {
       handleSave()
       

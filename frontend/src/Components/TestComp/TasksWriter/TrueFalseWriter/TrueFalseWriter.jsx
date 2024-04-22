@@ -34,7 +34,7 @@ const TrueFalse = ({questionNumber,question, onResponse,answers,taskid}) => {
   return (
     
       <div className="TrueFalseWriter-Container">
-        <div className= "TrueFlaseWriter-Task-serial-number">  {questionNumber} . </div>
+        <div className= 'TrueFlase-Writer-Task-serial-number'>  {questionNumber} . </div>
         <label className="Label-TrueFalseWriter-Question">
           <div>
           {question}</div>

@@ -215,7 +215,7 @@ function TestBoard({teacherid}) {
                     taskdetails : taskdetails,
                     teacherid: teacherid
                 })
-                window.location.href = 'http://localhost:3000/HomeTeache'
+                window.location.href = 'http://localhost:3000/HomeTeacher'
               }}>
                 Dolgozat véglegesítés
                 </button>

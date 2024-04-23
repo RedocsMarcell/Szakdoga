@@ -27,9 +27,7 @@ const HomeStudent = () => {
       
     }
   }, []);
-  useEffect(()=> {
-    console.log(userid)
-  }, [userid])
+
 
   const testbool= userid === 3
 

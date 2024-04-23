@@ -31,8 +31,7 @@ const MyProfil = () => {
         const fetchUser = async () => {
           try {
             const response = await axios.post('http://localhost:8081/profiledetails', { id });
-            console.log(id)
-            console.log(response.data)
+       
             if(response.data.length>0)
             {
                 let classid = response.data[0].class_Id

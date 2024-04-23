@@ -23,7 +23,7 @@ function TestBoard({teacherid}) {
         const fetchClasses = async () => {
           try {
             const response = await axios.post('http://localhost:8081/classes', {  });
-            console.log(response.data)
+    
             setClasses(response.data);
           } catch (error) {
             console.error(error);
@@ -60,7 +60,7 @@ function TestBoard({teacherid}) {
          }
          const updatedtasks = tasks.filter(task => task.id !==key )
          setTask(updatedtasks)
-         console.log(updatedtasks)
+       
     }
 
 
@@ -94,10 +94,7 @@ function TestBoard({teacherid}) {
         tasks[questionNumber-1]["question"] = question
         tasks[questionNumber-1]["answer"] = answer
         tasks[questionNumber-1]["correctanswer"] = correctanswer
-        console.log(tasks[questionNumber-1]["question"])
-        console.log(tasks[questionNumber-1]["answer"])
-        console.log(tasks[questionNumber-1]["correctanswer"])
-        
+     
 
     };
 
@@ -106,9 +103,7 @@ function TestBoard({teacherid}) {
         tasks[questionNumber-1]["question"] = question
         tasks[questionNumber-1]["answer"] = answer
         tasks[questionNumber-1]["correctanswer"] = correctanswer
-        console.log(tasks[questionNumber-1]["question"])
-        console.log(tasks[questionNumber-1]["answer"])
-        console.log(tasks[questionNumber-1]["correctanswer"])
+     
 
     };
 
@@ -118,9 +113,7 @@ function TestBoard({teacherid}) {
         tasks[questionNumber-1]["question"] = question
         tasks[questionNumber-1]["answer"] = answer
         tasks[questionNumber-1]["correctanswer"] = correctanswer
-        console.log(tasks[questionNumber-1]["question"])
-        console.log(tasks[questionNumber-1]["answer"])
-        console.log(tasks[questionNumber-1]["correctanswer"])
+ 
 
     };
     
@@ -203,7 +196,7 @@ function TestBoard({teacherid}) {
               <div className="finish-quiz-button-container">
               <button className="finish-quiz-button" disabled={tasks.length === 0}
               onClick={() => {
-                console.log(tasks)
+              
                 let taskdetails = {
                     class : selectedClass,
                     subject : selectedSubject,

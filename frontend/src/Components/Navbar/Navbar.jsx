@@ -87,7 +87,7 @@ function Navbar() {
         <div className="profile-menu">
           <ul>
            
-          <Link to={`/MyProfil`} ><li  onClick={() => console.log("My Profil")}>My Profil</li></Link>
+          <Link to={`/MyProfil`} ><li>My Profil</li></Link>
       
             <li> {<Logout />}  </li>
           </ul>

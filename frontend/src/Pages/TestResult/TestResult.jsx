@@ -85,7 +85,7 @@ const TestResult = () => {
   
 
   const handleScore = (addscore, addmaxscore,type) => {
-    console.log("types",types)
+
     if(!types.includes(type))
     {
        // Update the score by adding the new score
@@ -113,7 +113,7 @@ const TestResult = () => {
       }
     }
     setMaxScore(newmaxscore)
-    console.log("asnwersssssss",answers)
+ 
   },[answers])
  
 

@@ -12,8 +12,7 @@ const MultipleAnswersResult = ({ questionNumber, question, answers, useranswers 
         const handleCorrect = () => {
             const newChosenAnswer = [];
             let newscore = 0
-            console.log("userans",useranswers)
-            console.log("ans", answers)
+           
 
             for (let i =0;i<useranswers.length;i++)
             {
@@ -59,7 +58,7 @@ const MultipleAnswersResult = ({ questionNumber, question, answers, useranswers 
       },[useranswers])
       useEffect (() => {
         handleScore(score,maxscore,"multi")
-        console.log("multi",maxscore)
+        
       },[score])
 
       

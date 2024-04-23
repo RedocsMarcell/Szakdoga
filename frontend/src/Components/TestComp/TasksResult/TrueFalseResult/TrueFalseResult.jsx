@@ -38,7 +38,7 @@ const TrueFalseResult = ({questionNumber,question,answers,useranswers,handleScor
   
   useEffect (() => {
     handleScore(score,1,"true")
-    console.log("true")
+
   },[score])
 
   

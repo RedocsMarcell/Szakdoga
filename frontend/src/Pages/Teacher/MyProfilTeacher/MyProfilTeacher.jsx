@@ -28,7 +28,7 @@ const MyProfilTeacher = () => {
         const fetchUser = async () => {
           try {
             const response = await axios.post('http://localhost:8081/classes', { id });
-            console.log(response.data)
+    
             
             const Data = {
             

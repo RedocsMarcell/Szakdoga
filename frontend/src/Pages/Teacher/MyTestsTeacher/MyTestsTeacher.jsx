@@ -16,7 +16,7 @@ const MyTestsTeacher = () => {
       try {
         const tokenParts = storedToken.split('.');
         const payload = JSON.parse(atob(tokenParts[1]));
-        console.log(payload)
+
         setUserid(payload.roleid)
         setTeacherid(payload.id)
       } catch (error) {
@@ -58,7 +58,7 @@ const MyTestsTeacher = () => {
       const fetchUsertests = async () => {
         try {
           const response = await axios.post('http://localhost:8081/teacherusertests', {  });
-          console.log("usertests",response.data)
+
           setUsertests(response.data);
         } catch (error) {
           console.error(error);
@@ -81,8 +81,7 @@ const MyTestsTeacher = () => {
             });
             
             const testsForUserTest = response.data;
-            
-            console.log("tests",response.data)
+     
             setTests(prevTests => [...prevTests, ...testsForUserTest]);
             setSelectedClass("")
             setSelectedSubject("")
@@ -117,7 +116,7 @@ const MyTestsTeacher = () => {
             
             const testsForUserTest = response.data;
             
-            console.log(response.data)
+
             setUsernames(prevTests => [...prevTests, ...testsForUserTest]);
           }
         } catch (error) {

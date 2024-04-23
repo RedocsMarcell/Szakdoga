@@ -7,7 +7,7 @@ const Timer = ({ minutes_base, seconds_base, handleTimer }) => {
   let timer;
 
   useEffect(() => {
-    console.log("perc",minutes)
+
     handleTimer(minutes,seconds);
   }, [minutes,seconds]);
 

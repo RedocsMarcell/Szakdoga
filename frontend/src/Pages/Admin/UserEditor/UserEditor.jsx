@@ -28,7 +28,7 @@ const UserEditor = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.post('http://localhost:8081/adminusers', {  });
-      console.log(response.data)
+
       setUsers(response.data);
     } catch (error) {
       console.error(error);
@@ -43,7 +43,7 @@ const UserEditor = () => {
   }, []);
 
 const handleDeactivation = async () => {
-  console.log(userIdToDeactivate)
+
   try {
     await axios.post('http://localhost:8081/adminuserdeactivation', {
       id: userIdToDeactivate,
@@ -56,7 +56,7 @@ const handleDeactivation = async () => {
 }
 
 const handleActivation = async () => {
-  console.log(userIdToDeactivate)
+
   try {
     await axios.post('http://localhost:8081/adminuseractivation', {
       id: userIdToactivate,
@@ -69,7 +69,7 @@ const handleActivation = async () => {
 }
 
 const handleNewUser = async () => {
-  console.log(userIdToDeactivate)
+
   try {
     await axios.post('http://localhost:8081/newuser', {
       username: newusername,
@@ -122,7 +122,7 @@ const handleChangeclass = async () => {
 const handleChangeemail = async () => {
   
   try {
-    console.log(useridemailchange,newchangeemail)
+
     await axios.post('http://localhost:8081/changeemail', {
       userid: useridemailchange,
       email: newchangeemail,
@@ -265,7 +265,8 @@ const handleemailchange = (e) => {
         <input type="text"  onChange={handlepasswordchange}/>
         <button onClick={handleChangepassword}>Beállítás</button>
         <br/>
-        <br/> <br/>
+        <br/>
+        <br/>
         <br/>
         <div> Class_id változtatása </div>
         <div> user id megadása a Class_id módosításához: </div>
@@ -274,7 +275,8 @@ const handleemailchange = (e) => {
         <input type="text"  onChange={handleclasschange}/>
         <button onClick={handleChangeclass}>Beállítás</button> 
         <br/>
-        <br/> <br/>
+        <br/> 
+        <br/>
         <br/>
         <div> Email változtatása </div>
         <div> user id megadása a Email módosításához: </div>

@@ -12,10 +12,10 @@ const LoginForm = () => {
   function handleSubmit(event) {
     event.preventDefault();
 
-    console.log(username, password);
+   
     axios.post('http://localhost:8081/users', { username, password })
       .then(res => {
-        console.log(res)
+      
         setErrormessage(res.data.Error)
         localStorage.setItem('token', res.data.token);
         try {
@@ -23,7 +23,7 @@ const LoginForm = () => {
           const payload = JSON.parse(atob(tokenParts[1]));
 
           setUserid(payload);
-          console.log(payload);
+         
 
           window.location.href = payload.roleid===3 ? 'http://localhost:3000/HomeStudent': (payload.roleid===2 ?'http://localhost:3000/HomeTeacher' :"http://localhost:3000/HomeAdmin" )
 

@@ -19,14 +19,14 @@ const MyTestsStudent = () => {
       try {
         const tokenParts = storedToken.split('.');
         const payload = JSON.parse(atob(tokenParts[1]));
-        console.log(payload)
+
         setUserid(payload.roleid)
         const useruniqueid = payload.id
 
         
         axios.post('http://localhost:8081/receivecompletedtests', { useruniqueid })
         .then(res => {
-          console.log(res.data)
+      
             setTests(res.data)
 
        } )
@@ -53,7 +53,7 @@ for (let i = 0; i < tests.length; i++) {
 Promise.all(promises)
     .then(data => {
         setTestinformation(data);
-        console.log(data)
+   
     })
     .catch(error => {
         console.log(error);

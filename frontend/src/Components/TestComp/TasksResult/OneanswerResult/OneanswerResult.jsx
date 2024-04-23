@@ -14,8 +14,7 @@ function OneanswerResult({ questionNumber, question, answers,  useranswers,handl
       if (useranswers.length !=0)
       {
       const useranswerid = useranswers[0].AnswerId
-      console.log(answers)
-      console.log(useranswerid)
+   
       for (let i = 0; i < answers.length; i++) {
         if (answers[i].id === useranswerid) {
           
@@ -51,7 +50,7 @@ function OneanswerResult({ questionNumber, question, answers,  useranswers,handl
 
   useEffect (() => {
     handleScore(score,1,"one"+questionNumber.toString())
-    console.log("one")
+ 
   },[score])
 
   return (

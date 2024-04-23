@@ -17,24 +17,13 @@ app.use(cookieParser());
 
 
 const db = mysql.createConnection({
-     host: "localhost",
+    host: "localhost",
     user: "root",
     password: "" ,
     database: "szakdoga"
 })
 
-/**
-const plainTextPassword = 'tanár';
-bcrypt.hash(plainTextPassword, salt, function(err, hash) {
-    if (err) {
-        // Handle error
-    } else {
-        // Store the hash in the database
-        
-       
-    }
-});
-*/
+
 
 app.post('/users', (req, res) => {
     const sql = 'SELECT * FROM users WHERE Username = ?';

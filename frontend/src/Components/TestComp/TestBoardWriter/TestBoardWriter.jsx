@@ -33,8 +33,7 @@ function TestBoardWriter() {
     const remainingSeconds = remainingTimeInSeconds % 60; // Calculate remaining seconds
     setRemainingMinutes(remainingMinutes);
     setRemainingSeconds(remainingSeconds);
-    console.log(remainingMinutes)
-    console.log(remainingSeconds)
+
   }, [startTime, testduration]);
   
 
@@ -57,7 +56,7 @@ function TestBoardWriter() {
     const fetchTestInformation = async () => {
       try {
         const response = await axios.post('http://localhost:8081/receivetestwritinginformation', { id });
-        console.log("adatok",response.data)
+    
         setTesname(response.data[0].Name)
         setTestduration(response.data[0].Time)
         
@@ -134,11 +133,11 @@ function TestBoardWriter() {
   }
 
   useEffect (() => {
-    console.log("asd",useranswers)
+
   },[useranswers])
 
   const handleSave = () => {
-    console.log(useranswers)
+ 
                 
     axios.post('http://localhost:8081/senduseranswers', {
         answers: useranswers,

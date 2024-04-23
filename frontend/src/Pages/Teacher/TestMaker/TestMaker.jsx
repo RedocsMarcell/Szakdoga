@@ -14,7 +14,7 @@ const TestMaker = () => {
       try {
         const tokenParts = storedToken.split('.');
         const payload = JSON.parse(atob(tokenParts[1]));
-        console.log(payload.id)
+   
         setTeacherid(payload.id)
         setUserid(payload.roleid)
       } catch (error) {

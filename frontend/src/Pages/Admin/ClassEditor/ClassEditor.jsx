@@ -10,7 +10,7 @@ const ClassEditor = () => {
     const fetchClasses = async () => {
       try {
         const response = await axios.post('http://localhost:8081/classes', {  });
-        console.log(response.data)
+
         setClasses(response.data);
       } catch (error) {
         console.error(error);
@@ -37,9 +37,7 @@ const ClassEditor = () => {
     }
   };
 
-  useEffect (() => {
-    console.log("osztalyok",classes)
-  }, [classes])
+
   
 
   const handleDeleteClass = (index,classname) => {

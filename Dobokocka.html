@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobókocka Szimulátor</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Dobókocka Szimulátor</h1>
+        <div id="Dice" class="Dice">Dobókocka</div>
+        <button id="RollButton" class="btn btn-primary">Dobás</button>
+    </div>
+
+    <script>
+        const DiceImages = [
+            { file: 'kocka1.png', text: '1-es dobókocka' },
+            { file: 'kocka2.png', text: '2-es dobókocka' },
+            { file: 'kocka3.png', text: '3-as dobókocka' },
+            { file: 'kocka4.png', text: '4-es dobókocka' },
+            { file: 'kocka5.png', text: '5-ös dobókocka' },
+            { file: 'kocka6.png', text: '6-os dobókocka' }
+        ];
+
+        document.getElementById('RollButton').addEventListener('click', function() {
+            const RandomNumber = Math.floor(Math.random() * 6);
+            const Dice = document.getElementById('Dice');
+            const ImageUrl = DiceImages[RandomNumber].file;
+            const ImageText = DiceImages[RandomNumber].text;
+
+            // Imag objektum, hogy ellenőrizze hogy a kép megfelelően betöltődik-e
+            const img = new Image();
+            img.onload = function() {
+                // Ha a kép sikeresen betöltve jelenítse meg a képet
+                Dice.style.backgroundImage = `url('${ImageUrl}')`;
+                Dice.textContent = ''; // Töröli a szöveget
+            };
+            // A kép betöltése sikertelen akkor szöveges tartalom beállítása
+            img.onerror = function() {
+               
+                Dice.textContent = ImageText; // Display the text content
+            };
+            img.src = ImageUrl;
+        });
+    </script>
+</body>
+</html>

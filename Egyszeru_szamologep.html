@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egyszerű Számológép</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+  <h1>Számológép</h1>
+
+  <div class="mb-3">
+    <label for="Num1" class="form-label">Első szám:</label>
+    <input type="number" id="Num1" class="form-control" value="0"> <!-- Alapértelmezett érték 0 -->
+  </div>
+
+  <div class="mb-3">
+    <label for="Num2" class="form-label">Második szám (nem szükséges gyökvonásnál):</label>
+    <input type="number" id="Num2" class="form-control" value="0"> <!-- Alapértelmezett érték 0 -->
+  </div>
+
+  <button onclick="Calculate('Addition')" class="btn btn-primary m-1">Összeadás</button>
+  <button onclick="Calculate('Subtraction')" class="btn btn-primary m-1">Kivonás</button>
+  <button onclick="Calculate('Multiplication')" class="btn btn-primary m-1">Szorzás</button>
+  <button onclick="Calculate('Division')" class="btn btn-primary m-1">Osztás</button>
+  <button onclick="Calculate('Exponentiation')" class="btn btn-primary m-1">Hatványozás</button>
+  <button onclick="Calculate('Root_trait')" class="btn btn-primary m-1">Gyökvonás</button>
+
+  <h2 class="mt-3">Eredmény: <span id="Result"></span></h2>
+
+  <script>
+    function Calculate(Count) {
+      const Num1 = parseFloat(document.getElementById('Num1').value) || 0; // Alapértékként 0 értéket használok hogy ha a felhasználó elfejtené a hatványozásnál beirni számot akkor is kiszámolja
+      const Num2 = parseFloat(document.getElementById('Num2').value) || 0;
+      let Result;
+
+      switch (Count) {
+        case 'Addition':
+          Result = Num1 + Num2;
+          break;
+
+        case 'Subtraction':
+          Result = Num1 - Num2;
+          break;
+
+        case 'Multiplication':
+          Result = Num1 * Num2;
+          break;
+
+        case 'Division':
+          Result = Num1 / Num2;
+          break;
+
+        case 'Exponentiation':
+          Result = Math.pow(Num1, Num2);
+          break;
+
+        case 'Root_trait':
+          Result = Math.sqrt(Num1); 
+          break;  
+
+        default:
+          Result = 'Error!';
+      }
+
+      document.getElementById('Result').innerText = Result;
+    }
+  </script>
+</body>
+</html>

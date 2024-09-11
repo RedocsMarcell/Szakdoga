@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <!-- A HTML dokumentum karakterkódolása -->
+  <meta charset="UTF-8">
+  
+  <!-- Reszponzív dizájn biztosítása Bootstrap segítségével -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Bootstrap CSS betöltése -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <title>Webprogramozás I. - Vizsgafeladat</title>
+</head>
+<body>
+
+  <!-- Navigációs sáv Bootstrap-ból -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <!-- Oldal cím vagy logó -->
+      <a class="navbar-brand" href="#">Vizsgafeladat</a>
+      
+      <!-- Menü gomb kis kijelzők esetén -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigáció váltása">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!-- Navigációs linkek -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Főoldal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Kapcsolat</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Főoldali fejlécek és szövegek -->
+  <div class="container mt-4">
+    <!-- Oldalcím (h1 tag) -->
+    <h1 class="text-center">Üdvözöllek a vizsgafeladat oldalon!</h1>
+    
+    <!-- Alfejezet (h2 tag) -->
+    <h2 class="mt-5">Ez egy Bootstrap-alapú példa oldal</h2>
+    
+    <!-- Bekezdés szöveg (p tag) -->
+    <p>Ezen az oldalon a Webprogramozás I. tantárgyhoz szükséges HTML és Bootstrap alapvető elemei találhatók meg.</p>
+    
+    <!-- Bootstrap kártya elem -->
+    <div class="card" style="width: 18rem;">
+      <img src="https://via.placeholder.com/150" class="card-img-top" alt="Példa kép">
+      <div class="card-body">
+        <!-- Kártya cím -->
+        <h5 class="card-title">Bootstrap kártya elem</h5>
+        
+        <!-- Kártya szöveg -->
+        <p class="card-text">Ez egy példa a Bootstrap kártya elemére, amely szöveggel és képpel kombinálható.</p>
+        
+        <!-- Kártya gomb -->
+        <a href="#" class="btn btn-primary">További információ</a>
+      </div>
+    </div>
+
+    <!-- Űrlap elem -->
+    <h3 class="mt-5">Regisztrációs űrlap</h3>
+    <form>
+      <!-- Név beviteli mező (input) -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Név</label>
+        <input type="text" class="form-control" id="name" placeholder="Írd be a neved">
+      </div>
+      
+      <!-- E-mail beviteli mező (input) -->
+      <div class="mb-3">
+        <label for="email" class="form-label">E-mail cím</label>
+        <input type="email" class="form-control" id="email" placeholder="Írd be az e-mail címed">
+      </div>
+      
+      <!-- Jelszó beviteli mező (input) -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Jelszó</label>
+        <input type="password" class="form-control" id="password" placeholder="Írd be a jelszavad">
+      </div>
+
+      <!-- Checkbox (jelölőnégyzet) -->
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="terms">
+        <label class="form-check-label" for="terms">
+          Elfogadom a feltételeket
+        </label>
+      </div>
+      
+      <!-- Küldés gomb -->
+      <button type="submit" class="btn btn-primary">Regisztráció</button>
+    </form>
+  </div>
+
+  <!-- Lábjegyzet -->
+  <footer class="bg-light text-center text-lg-start mt-5">
+    <div class="text-center p-3">
+      © 2024 Vizsgafeladat: 
+      <a class="text-dark" href="https://example.com/">example.com</a>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JavaScript betöltése -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
